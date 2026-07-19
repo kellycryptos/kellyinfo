@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
+import ContentThreads from "@/components/ContentThreads";
 import TechStack from "@/components/TechStack";
 import Connect from "@/components/Connect";
 import Footer from "@/components/Footer";
@@ -26,6 +27,7 @@ export default function Home() {
         <Hero />
         <About />
         <Projects />
+        <ContentThreads />
         <TechStack />
         <Connect />
       </main>

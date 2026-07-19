@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Mail, Send, Twitter, Github,
-  Copy, Check, ExternalLink, X, ShieldCheck, MessageSquare,
+  Copy, Check, ExternalLink, MessageSquare,
 } from "lucide-react";
-import confetti from "canvas-confetti";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 14 },
@@ -18,9 +17,6 @@ const fadeUp = (delay = 0) => ({
 export default function Connect() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedTelegram, setCopiedTelegram] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: "", contact: "", message: "" });
 
   const copyEmail = () => {
     navigator.clipboard.writeText("sundersltd1@gmail.com");
@@ -32,22 +28,6 @@ export default function Connect() {
     navigator.clipboard.writeText("@kellycryptos");
     setCopiedTelegram(true);
     setTimeout(() => setCopiedTelegram(false), 2000);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSent(true);
-    confetti({
-      particleCount: 60,
-      spread: 55,
-      origin: { y: 0.6 },
-      colors: ["#00e5ff", "#60a5fa", "#2563eb"],
-    });
-    setTimeout(() => {
-      setSent(false);
-      setModalOpen(false);
-      setForm({ name: "", contact: "", message: "" });
-    }, 2500);
   };
 
   const contacts = [
@@ -165,105 +145,15 @@ export default function Connect() {
 
         {/* Message CTA */}
         <motion.div {...fadeUp(0.28)} className="flex justify-center">
-          <button
-            onClick={() => setModalOpen(true)}
+          <a
+            href="mailto:sundersltd1@gmail.com"
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl glass border border-white/10 hover:border-cyan-500/30 text-white font-mono font-semibold text-sm transition-all hover:shadow-[0_0_20px_-6px_rgba(0,229,255,0.2)]"
           >
             <MessageSquare className="w-4 h-4 text-cyan-400" />
             Send a Direct Message
-          </button>
+          </a>
         </motion.div>
       </div>
-
-      {/* Modal */}
-      <AnimatePresence>
-        {modalOpen && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
-            onClick={() => setModalOpen(false)}
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 14 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 14 }}
-              transition={{ duration: 0.22 }}
-              className="relative w-full max-w-md glass border border-cyan-500/20 rounded-2xl p-6 sm:p-8 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setModalOpen(false)}
-                className="absolute top-4 right-4 p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
-              >
-                <X className="w-4 h-4" />
-              </button>
-
-              {!sent ? (
-                <div className="space-y-5">
-                  <div>
-                    <h3 className="font-mono font-bold text-lg text-white flex items-center gap-2">
-                      <Send className="w-4 h-4 text-cyan-400" />
-                      Send a Message
-                    </h3>
-                    <p className="text-xs text-gray-500 font-mono mt-1">
-                      Reaches Kelly directly.
-                    </p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-3">
-                    {[
-                      { key: "name", label: "Your Name / Handle", placeholder: "@satoshi" },
-                      { key: "contact", label: "Contact (Telegram or Email)", placeholder: "telegram / email" },
-                    ].map((f) => (
-                      <div key={f.key}>
-                        <label className="block text-[10px] font-mono text-gray-400 mb-1.5 uppercase tracking-wider">
-                          {f.label}
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={form[f.key as keyof typeof form]}
-                          onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                          placeholder={f.placeholder}
-                          className="w-full px-4 py-2.5 rounded-xl bg-black/30 border border-white/8 text-white font-mono text-xs focus:border-cyan-400/50 focus:outline-none placeholder:text-gray-600 transition-colors"
-                        />
-                      </div>
-                    ))}
-
-                    <div>
-                      <label className="block text-[10px] font-mono text-gray-400 mb-1.5 uppercase tracking-wider">
-                        Message
-                      </label>
-                      <textarea
-                        required
-                        rows={3}
-                        value={form.message}
-                        onChange={(e) => setForm({ ...form, message: e.target.value })}
-                        placeholder="Let's build something together..."
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/30 border border-white/8 text-white font-mono text-xs focus:border-cyan-400/50 focus:outline-none resize-none placeholder:text-gray-600 transition-colors"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-bold text-xs hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/20"
-                    >
-                      Send Message →
-                    </button>
-                  </form>
-                </div>
-              ) : (
-                <div className="py-10 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mx-auto animate-bounce text-emerald-400">
-                    <ShieldCheck className="w-6 h-6" />
-                  </div>
-                  <h4 className="font-mono font-bold text-white">Message Sent!</h4>
-                  <p className="text-xs text-gray-500 font-mono">Kelly will respond shortly.</p>
-                </div>
-              )}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
