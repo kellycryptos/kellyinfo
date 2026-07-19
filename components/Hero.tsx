@@ -3,17 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Zap, Sparkles, Copy, Check, Compass, ShieldCheck, Terminal, MapPin } from "lucide-react";
+import { ArrowDown, Zap, Sparkles, Copy, Check, Compass, ShieldCheck, Terminal, Send } from "lucide-react";
 
-interface HeroProps {
-  onOpenWallet: () => void;
-}
-
-export default function Hero({ onOpenWallet }: HeroProps) {
+export default function Hero() {
   const [copiedHandle, setCopiedHandle] = useState(false);
 
   const copyHandle = () => {
-    navigator.clipboard.writeText("@kellycryptos");
+    navigator.clipboard.writeText("Kelly");
     setCopiedHandle(true);
     setTimeout(() => setCopiedHandle(false), 2000);
   };
@@ -44,7 +40,7 @@ export default function Hero({ onOpenWallet }: HeroProps) {
                 <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-cyan-400/30 group-hover:border-cyan-400/80 transition-colors shadow-inner">
                   <Image
                     src="/images/avatar.png"
-                    alt="Kelly (@kellycryptos) Cyberpunk Avatar"
+                    alt="Kelly Cyberpunk Avatar"
                     fill
                     priority
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -57,10 +53,10 @@ export default function Hero({ onOpenWallet }: HeroProps) {
                   <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between p-2.5 rounded-xl bg-cyber-dark/85 backdrop-blur-md border border-white/10 text-xs font-mono">
                     <div className="flex items-center gap-2">
                       <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                      <span className="text-white font-bold">@kellycryptos</span>
+                      <span className="text-white font-bold">Kelly</span>
                     </div>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
-                      VERIFIED
+                      VERIFIED BUILDER
                     </span>
                   </div>
                 </div>
@@ -68,13 +64,13 @@ export default function Hero({ onOpenWallet }: HeroProps) {
                 {/* Quick Info Terminal Bar */}
                 <div className="p-3 rounded-xl bg-cyber-bg border border-white/10 text-xs font-mono space-y-1.5">
                   <div className="flex items-center justify-between text-gray-300">
-                    <span className="flex items-center gap-1 text-cyan-400">
-                      <MapPin className="w-3.5 h-3.5" /> Zürich, Switzerland
+                    <span className="text-cyan-400 font-semibold flex items-center gap-1">
+                      <Terminal className="w-3.5 h-3.5" /> Web3 Architect
                     </span>
-                    <span className="text-purple-400 font-semibold">Web3 Architect</span>
+                    <span className="text-purple-400 font-semibold">Base • Solana • Monad</span>
                   </div>
                   <div className="text-[11px] text-gray-400 flex items-center justify-between pt-1 border-t border-white/5">
-                    <span>Base • Solana • Arc • Monad</span>
+                    <span>Arc • Plume • Jito</span>
                     <span className="text-emerald-400 font-bold">Cabal Leader</span>
                   </div>
                 </div>
@@ -104,9 +100,8 @@ export default function Hero({ onOpenWallet }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="space-y-3"
             >
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white font-mono">
-                KELLY <br className="hidden sm:inline" />
-                <span className="gradient-text-purple">@kellycryptos</span>
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white font-mono">
+                KELLY
               </h1>
 
               <p className="text-lg sm:text-2xl text-cyan-300 font-mono font-bold tracking-wide">
@@ -121,7 +116,7 @@ export default function Hero({ onOpenWallet }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base sm:text-xl text-gray-200 max-w-2xl leading-relaxed font-sans font-normal"
             >
-              Zürich-based crypto architect turning vision into onchain reality across cabals, DAOs, agency marketing, and high-performance protocols.
+              Crypto architect turning vision into onchain reality across cabals, DAOs, agency marketing, and high-performance protocols.
             </motion.p>
 
             {/* Key Badges */}
@@ -163,18 +158,18 @@ export default function Hero({ onOpenWallet }: HeroProps) {
                 <Compass className="w-4 h-4 text-cyan-200 group-hover:rotate-45 transition-transform" />
               </a>
 
-              <button
-                onClick={onOpenWallet}
+              <a
+                href="#connect"
                 className="px-6 py-3.5 rounded-xl glass-panel hover:bg-white/10 border border-cyan-500/40 text-cyan-300 font-mono font-semibold text-sm transition-all flex items-center gap-2"
               >
-                <Zap className="w-4 h-4 text-cyan-400" />
-                <span>Demo Privy Session</span>
-              </button>
+                <Send className="w-4 h-4 text-cyan-400" />
+                <span>Get in Touch</span>
+              </a>
 
               <button
                 onClick={copyHandle}
                 className="p-3.5 rounded-xl glass-panel hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors"
-                title="Copy handle @kellycryptos"
+                title="Copy name Kelly"
               >
                 {copiedHandle ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>

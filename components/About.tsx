@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, MapPin, Users, TrendingUp, Cpu, Flame, Compass, Star } from "lucide-react";
+import { Shield, Users, TrendingUp, Cpu, Flame, Compass, Star, Code } from "lucide-react";
 
 export default function About() {
   const coreStrengths = [
@@ -42,14 +42,14 @@ export default function About() {
         {/* Header */}
         <div className="flex flex-col items-center text-center space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>ZÜRICH CRYPTO ARCHITECT</span>
+            <Code className="w-3.5 h-3.5" />
+            <span>FULL-STACK WEB3 ARCHITECT</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
             About <span className="gradient-text-cyan">Kelly</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
-            Zürich-based Co-Founder, Builder, Trader, and Advisor operating at the intersection of capital, architecture, and high-signal community hubs.
+            Co-Founder, Builder, Trader, and Advisor operating at the intersection of capital, architecture, and high-signal community hubs.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function About() {
               <span>Building, Trading & Advisory at Scale</span>
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
-              Kelly (@kellycryptos) is an independent Web3 builder and strategist operating out of Zürich. Having co-founded private Telegram cabals (<strong className="text-white">Based TG</strong>), founded decentralized communities (<strong className="text-white">Winners DAO</strong>), and launched marketing engines (<strong className="text-white">Based Marketing Agency</strong>), Kelly bridges technical engineering with high-impact Web3 growth.
+              Kelly is an independent Web3 builder and strategist. Having co-founded private Telegram cabals (<strong className="text-white">Based TG</strong>), founded decentralized communities (<strong className="text-white">Winners DAO</strong>), and launched marketing engines (<strong className="text-white">Based Marketing Agency</strong>), Kelly bridges technical engineering with high-impact Web3 growth.
             </p>
             <p className="text-gray-400 text-sm font-mono pt-2">
               Holding full builder access on <span className="text-purple-300">Monad</span>, active membership in the <span className="text-emerald-300">Jito Cabal</span>, ambassador status at <span className="text-cyan-300">Plume Network</span>, and contributions to <span className="text-pink-300">OG Lab</span>, <span className="text-amber-300">Jupiter</span>, and <span className="text-blue-300">Arcium</span>.

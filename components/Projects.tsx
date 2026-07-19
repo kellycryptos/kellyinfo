@@ -21,27 +21,27 @@ export interface Project {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const selectedWork: Project[] = [
+  const shippedProjects: Project[] = [
     {
       id: "synarc-dao",
       name: "SynArc DAO",
-      tagline: "Governance + Treasury Platform for DAOs & AI Agents",
-      desc: "Comprehensive multi-chain governance platform supporting automated proposal execution, autonomous AI agent voters, and treasury management. 480+ proposals processed with active treasury vaults.",
+      tagline: "Governance + Treasury Infrastructure for DAOs & AI Agents",
+      desc: "Multi-chain governance platform powered by @synarc/agent-sdk supporting automated proposal execution, autonomous AI agent voting bots, and treasury management.",
       image: "/images/synarc_dao.png",
       liveUrl: "https://synarcdao.xyz",
       githubUrl: "https://github.com/kellycryptos/synarc-dao",
-      tech: ["Next.js 15", "TypeScript", "Ethers.js", "Privy", "Solidity", "Subgraphs"],
+      tech: ["@synarc/agent-sdk", "Next.js 15", "TypeScript", "Ethers.js", "Solidity"],
       badge: "LIVE PROTOCOL",
       architectureDetails: [
+        "Powered by @synarc/agent-sdk for autonomous agent proposal analysis & voting.",
         "Gasless proposal delegation powered by Paymasters & ERC-4337 smart accounts.",
-        "AI Agent voting bots integrated via Groq LLM API for automated proposal risk scoring.",
         "Multi-sig treasury vault management across Base, Arc, and Ethereum L2s.",
       ],
     },
     {
       id: "babel-markets",
       name: "Babel Markets",
-      tagline: "AI Agentic Prediction Markets for Non-English Signals",
+      tagline: "AI Agentic Prediction Markets for Multilingual Signals",
       desc: "Automated prediction market engine parsing non-English global news streams with AI agents to create, settle, and market-make news-driven prediction pools.",
       image: "/images/babel_markets.png",
       liveUrl: "https://babel-markets.vercel.app",
@@ -55,10 +55,26 @@ export default function Projects() {
       ],
     },
     {
+      id: "govcopilot",
+      name: "GovCoPilot",
+      tagline: "Autonomous AI DAO Governance Co-Pilot Assistant",
+      desc: "OKX AI Genesis Hackathon winner. GovCoPilot analyzes complex DAO proposals, calculates voting alignment vectors for delegates, and auto-executes votes onchain.",
+      image: "/images/govcopilot.png",
+      liveUrl: "https://govcopilot.vercel.app",
+      githubUrl: "https://github.com/kellycryptos/govcopilot",
+      tech: ["Next.js 15", "Python", "OKX X Layer", "Groq LLM", "Ethers.js", "Tailwind CSS"],
+      badge: "OKX HACKATHON WINNER",
+      architectureDetails: [
+        "Vector database semantic search indexing proposal histories and delegate manifestos.",
+        "Groq Llama-3 70B fine-tuned agent calculating voting alignment vectors in real time.",
+        "Automated multi-chain vote execution with paymaster gas sponsorship.",
+      ],
+    },
+    {
       id: "nft-hash-flash",
       name: "NFTHashFlash",
-      tagline: "Ultra-Fast Multi-Chain NFT Telegram Bot",
-      desc: "High-speed Telegram bot allowing users to generate, mint, and pin metadata for multi-chain NFTs directly through chat commands in under 3 seconds.",
+      tagline: "Fast Multi-Chain NFT Minting Telegram Bot",
+      desc: "Ultra-fast Telegram bot allowing users to generate, mint, and pin metadata for multi-chain NFTs directly through chat commands in under 3 seconds.",
       image: "/images/nfthashflash.png",
       githubUrl: "https://github.com/kellycryptos/nft-hash-flash",
       tech: ["Node.js", "Ethers.js", "Telegram Bot API", "Pinata IPFS", "Solana Web3"],
@@ -69,41 +85,87 @@ export default function Projects() {
         "Built-in wallet encryption with instant telegram export key commands.",
       ],
     },
+    {
+      id: "goalhook-fc",
+      name: "GoalHook FC ($GOAL)",
+      tagline: "World Cup 2026 Uniswap v4 Dynamic Fee Hook",
+      desc: "Uniswap v4 custom hook architecture on X Layer adjusting swap fees dynamically based on real-time live World Cup sports match events and goal triggers.",
+      image: "/images/goalhook.png",
+      githubUrl: "https://github.com/kellycryptos/goalhook-fc",
+      tech: ["Solidity", "Uniswap v4 Hooks", "Foundry", "OKX X Layer", "Chainlink Oracles"],
+      badge: "UNISWAP V4 HOOK",
+      architectureDetails: [
+        "Custom beforeSwap() hook calculation adjusting swap fees dynamically between 0.05% and 3.00%.",
+        "Chainlink Functions integration pulling real-time football match scores onchain.",
+        "Sub-second liquidity pool re-balancing during goal scoring events.",
+      ],
+    },
+    {
+      id: "black-bull-oracle",
+      name: "Black Bull Oracle",
+      tagline: "Groq-Powered Community AI Persona & Decentralized Oracle",
+      desc: "Groq LLM-powered community AI persona combined with a high-frequency decentralized oracle engine providing low-latency volatility feeds across L2s.",
+      image: "/images/black_bull.png",
+      liveUrl: "https://blackbulloracle.xyz",
+      githubUrl: "https://github.com/kellycryptos/black-bull-oracle",
+      tech: ["Groq LLM", "TypeScript", "Python", "Ethers.js", "Pyth Network", "Solidity"],
+      badge: "AI PERSONA & ORACLE",
+      architectureDetails: [
+        "Groq Llama-3 real-time sentiment & market signal processing persona.",
+        "Multi-node WebSocket price aggregation with outlier rejection algorithms.",
+        "Sub-hundred millisecond oracle updates deployed on Base and Arc.",
+      ],
+    },
+    {
+      id: "gov-encrypt",
+      name: "Gov-Encrypt",
+      tagline: "Confidential Governance on Solana with Arcium",
+      desc: "Privacy-preserving governance protocol on Solana leveraging Arcium confidential computing MXE (Multi-Party Execution Engine) for encrypted delegate voting.",
+      image: "/images/gov_encrypt.png",
+      githubUrl: "https://github.com/kellycryptos/gov-encrypt",
+      tech: ["Arcium MXE", "Solana Anchor", "Rust", "TypeScript", "Zero-Knowledge"],
+      badge: "CONFIDENTIAL DEFI",
+      architectureDetails: [
+        "Encrypted vote payloads processed in Arcium Multi-Party Execution Environments.",
+        "Zero-knowledge proof verification of delegate voting weights without revealing individual choices.",
+        "Anchor Rust smart contract program deployed on Solana devnet & testnet.",
+      ],
+    },
   ];
 
   return (
-    <section id="projects" className="py-24 relative z-10 border-t border-white/5">
+    <section id="built" className="py-24 relative z-10 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Title */}
         <div className="flex flex-col items-center text-center space-y-3 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
             <Code className="w-3.5 h-3.5" />
-            <span>CURATED BUILD PORTFOLIO</span>
+            <span>SHIPPED PRODUCTS & PROTOCOLS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Selected <span className="gradient-text-cyan">Work</span>
+            What I Have <span className="gradient-text-cyan">Built</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
-            Minimal, high-impact selection of flagship products engineered for scale, speed, and real traction.
+            Visual showcase of 7 key protocols, AI agents, Telegram bots, and confidential DeFi primitives shipped across Web3.
           </p>
         </div>
 
-        {/* 3 Selected Work Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {selectedWork.map((project, idx) => (
+        {/* 7 Shipped Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {shippedProjects.map((project, idx) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.07 }}
               whileHover={{ y: -6 }}
               className="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group"
             >
               <div>
                 {/* Thumbnail */}
-                <div className="relative h-52 w-full overflow-hidden bg-cyber-card">
+                <div className="relative h-56 w-full overflow-hidden bg-cyber-card">
                   <Image
                     src={project.image}
                     alt={project.name}

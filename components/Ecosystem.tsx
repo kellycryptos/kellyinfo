@@ -153,9 +153,9 @@ export default function Ecosystem() {
 
               <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-gray-400">
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Active Role
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Active Contribution
                 </span>
-                <span className="text-gray-300">Zürich Hub</span>
+                <span className="text-cyan-300 font-mono">Web3 Protocol</span>
               </div>
             </motion.div>
           ))}

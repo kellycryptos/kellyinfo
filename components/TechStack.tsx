@@ -17,7 +17,6 @@ export default function TechStack() {
     { name: "Framer Motion", category: "Frontend", level: "Advanced", desc: "Parallax, 3D tilts, micro-animations", color: "text-pink-400" },
 
     // Web3
-    { name: "Privy UX", category: "Web3 & Smart Accounts", level: "Expert", desc: "Embedded wallets, passkey gasless auth", color: "text-purple-400" },
     { name: "viem / ethers.js", category: "Web3 & Smart Accounts", level: "Expert", desc: "Contract interactions, ABI encoding, RPCs", color: "text-amber-400" },
     { name: "Circle Primitives & CCTP", category: "Web3 & Smart Accounts", level: "Advanced", desc: "Cross-chain USDC transfers & settlement", color: "text-blue-300" },
     { name: "ERC-4337 Smart Accounts", category: "Web3 & Smart Accounts", level: "Advanced", desc: "Account abstraction, paymasters, session keys", color: "text-emerald-400" },

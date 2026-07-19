@@ -15,11 +15,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KELLY | @kellycryptos — Co-Founder, Builder, Trader & Advisor",
-  description: "Zürich-based Web3 architect, trader, fund manager, and co-founder across Based TG, Winners DAO, Based Marketing, Arc, Jupiter, Jito, Plume, Monad & Arcium.",
+  title: "KELLY — Co-Founder, Builder, Trader & Advisor",
+  description: "Web3 architect, trader, fund manager, and co-founder across Based TG, Winners DAO, Based Marketing, Arc, Jupiter, Jito, Plume, Monad & Arcium.",
   keywords: [
     "Kelly",
-    "kellycryptos",
     "Co-Founder",
     "Crypto Trader",
     "Based TG",
@@ -30,23 +29,22 @@ export const metadata: Metadata = {
     "Monad Full Access",
     "Jupiter Creators",
     "Arcium",
-    "Zürich Crypto",
   ],
-  authors: [{ name: "Kelly (@kellycryptos)" }],
+  authors: [{ name: "Kelly" }],
   creator: "Kelly",
   openGraph: {
-    title: "KELLY | @kellycryptos — Co-Founder • Builder • Trader • Advisor",
-    description: "Zürich-based crypto architect turning vision into onchain reality across Solana, Base, Arc, Monad & Ethereum.",
+    title: "KELLY — Co-Founder • Builder • Trader • Advisor",
+    description: "Crypto architect turning vision into onchain reality across Solana, Base, Arc, Monad & Ethereum.",
     url: "https://kellyinfo.vercel.app",
-    siteName: "Kelly (@kellycryptos) Portfolio",
+    siteName: "Kelly Portfolio",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "KELLY | @kellycryptos — Co-Founder • Builder • Trader • Advisor",
-    description: "Zürich-based Web3 architect, trader, fund manager & founder. Active across Based TG, Winners DAO, Jito, Monad, Arc & Plume.",
-    creator: "@kellycryptos",
+    title: "KELLY — Co-Founder • Builder • Trader • Advisor",
+    description: "Web3 architect, trader, fund manager & founder. Active across Based TG, Winners DAO, Jito, Monad, Arc & Plume.",
+    creator: "Kelly",
   },
   icons: {
     icon: "/favicon.ico",

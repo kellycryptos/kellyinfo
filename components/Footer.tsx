@@ -13,10 +13,10 @@ export default function Footer() {
             </div>
             <div>
               <div className="text-sm font-bold text-white">
-                KELLY <span className="text-cyan-400">| @kellycryptos</span>
+                KELLY
               </div>
               <div className="text-gray-400 text-[11px]">
-                Independent Web3 Builder • Zürich, Switzerland 🇨🇭
+                Independent Web3 Builder
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-400 text-[11px]">
           <div>
-            © {new Date().getFullYear()} Kelly (@kellycryptos). Built with Next.js 15, TypeScript & Tailwind CSS.
+            © {new Date().getFullYear()} Kelly. Built with Next.js 15, TypeScript & Tailwind CSS.
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
