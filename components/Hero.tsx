@@ -90,25 +90,6 @@ export default function Hero() {
               of DeFi, AI agents &amp; confidential compute.
             </motion.p>
 
-            {/* Badges */}
-            <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-2">
-              {[
-                "⚡ Based TG Cabal",
-                "👑 Winners DAO",
-                "🔹 Jito Cabal",
-                "🟣 Monad Builder",
-                "🕊️ Plume Ambassador",
-                "⚙️ Arc Architect",
-              ].map((b) => (
-                <span
-                  key={b}
-                  className="px-3 py-1.5 rounded-lg bg-white/4 border border-white/8 text-[11px] font-mono text-gray-300 hover:border-cyan-500/30 hover:text-cyan-300 transition-all cursor-default"
-                >
-                  {b}
-                </span>
-              ))}
-            </motion.div>
-
             {/* CTA Buttons */}
             <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 pt-2">
               <a

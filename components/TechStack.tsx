@@ -95,7 +95,7 @@ export default function TechStack() {
             { label: "Chains Deployed On", value: "7+" },
             { label: "Smart Contracts Shipped", value: "15+" },
             { label: "AI Agents Built", value: "5+" },
-            { label: "Hackathons Won", value: "1" },
+            { label: "Selected Builds", value: "4" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col gap-0.5">
               <span className="font-mono font-black text-2xl text-neon">{stat.value}</span>

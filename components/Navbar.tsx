@@ -19,7 +19,6 @@ export default function Navbar() {
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Projects", href: "#built" },
-    { name: "Ecosystem", href: "#ecosystem" },
     { name: "Tech Stack", href: "#tech-stack" },
     { name: "Connect", href: "#connect" },
   ];
@@ -51,15 +50,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Button */}
-        <div className="hidden md:block">
-          <a
-            href="#connect"
-            className="px-4 py-1.5 rounded-full text-xs font-mono font-semibold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 transition-all"
-          >
-            Contact
-          </a>
-        </div>
 
         {/* Mobile menu trigger */}
         <button

@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
-import Ecosystem from "@/components/Ecosystem";
 import TechStack from "@/components/TechStack";
 import Connect from "@/components/Connect";
 import Footer from "@/components/Footer";
@@ -27,7 +26,6 @@ export default function Home() {
         <Hero />
         <About />
         <Projects />
-        <Ecosystem />
         <TechStack />
         <Connect />
       </main>
