@@ -64,20 +64,16 @@
   text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
 }
 
-.glow-purple {
-  text-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
-}
-
-.glow-pink {
-  text-shadow: 0 0 12px rgba(255, 0, 122, 0.6);
+.glow-blue {
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 .glow-box-cyan {
   box-shadow: 0 0 20px -3px rgba(0, 240, 255, 0.3);
 }
 
-.glow-box-purple {
-  box-shadow: 0 0 20px -3px rgba(168, 85, 247, 0.3);
+.glow-box-blue {
+  box-shadow: 0 0 20px -3px rgba(56, 189, 248, 0.3);
 }
 
 /* Gradient Text */
@@ -87,14 +83,8 @@
   -webkit-text-fill-color: transparent;
 }
 
-.gradient-text-purple {
-  background: linear-gradient(135deg, #00f0ff 0%, #a855f7 50%, #ff007a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-text-gold {
-  background: linear-gradient(135deg, #ffe600 0%, #ff8800 100%);
+.gradient-text-blue {
+  background: linear-gradient(135deg, #00f0ff 0%, #38bdf8 50%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

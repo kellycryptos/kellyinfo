@@ -187,7 +187,7 @@ export default function Projects() {
                     <span>{project.name}</span>
                   </h3>
                   
-                  <p className="text-xs font-mono text-purple-300 font-semibold">
+                  <p className="text-xs font-mono text-cyan-300 font-semibold">
                     {project.tagline}
                   </p>
 
@@ -270,7 +270,7 @@ export default function Projects() {
                 <h3 className="text-2xl font-bold font-mono text-white">
                   {selectedProject.name} Architecture
                 </h3>
-                <p className="text-sm font-mono text-purple-300">
+                <p className="text-sm font-mono text-cyan-300">
                   {selectedProject.tagline}
                 </p>
               </div>
@@ -322,7 +322,7 @@ export default function Projects() {
                     href={selectedProject.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-mono font-bold text-xs hover:opacity-90 transition-opacity"
+                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-bold text-xs hover:opacity-90 transition-opacity"
                   >
                     <span>Launch Live App</span>
                     <ExternalLink className="w-4 h-4" />

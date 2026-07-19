@@ -35,7 +35,7 @@ export default function CyberGridBackground() {
       color: string;
     }> = [];
 
-    const colors = ["#00f0ff", "#a855f7", "#ff007a", "#00ff9d"];
+    const colors = ["#00f0ff", "#38bdf8", "#0284c7", "#00d8ff"];
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
@@ -125,7 +125,7 @@ export default function CyberGridBackground() {
           ctx.moveTo(node.x, node.y);
           ctx.lineTo(mouseX, mouseY);
           const mAlpha = (1 - mdist / 180) * 0.25;
-          ctx.strokeStyle = `rgba(168, 85, 247, ${mAlpha})`;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${mAlpha})`;
           ctx.stroke();
         }
       }

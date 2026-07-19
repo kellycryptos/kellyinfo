@@ -9,29 +9,29 @@ export default function About() {
       icon: Users,
       title: "Co-Founder & Cabal Leadership",
       desc: "Co-founded Based TG (private Telegram cabal), founded Winners DAO, and co-founded Based Marketing Agency to drive high-signal growth and community power.",
-      color: "text-purple-400",
-      borderColor: "hover:border-purple-500/50",
+      color: "text-cyan-400",
+      borderColor: "hover:border-cyan-500/50",
     },
     {
       icon: TrendingUp,
       title: "Active Trader & Fund Manager",
       desc: "Managing capital, executing high-conviction trades, and advising emerging protocols on tokenomics, liquidity strategies, and ecosystem alignment.",
-      color: "text-emerald-400",
-      borderColor: "hover:border-emerald-500/50",
+      color: "text-blue-400",
+      borderColor: "hover:border-blue-500/50",
     },
     {
       icon: Cpu,
       title: "Protocol Architect & Builder",
       desc: "Full-stack developer building gasless UX, autonomous AI agents, prediction markets, and custom smart contract infrastructure across EVM & Solana.",
-      color: "text-cyan-400",
-      borderColor: "hover:border-cyan-500/50",
+      color: "text-sky-400",
+      borderColor: "hover:border-sky-500/50",
     },
     {
       icon: Shield,
       title: "Ecosystem Ambassador & Contributor",
       desc: "Full access builder on Monad, Plume Network Ambassador, Jito Cabal member, Jupiter Creator, and active contributor to OG Lab & Arcium.",
-      color: "text-amber-400",
-      borderColor: "hover:border-amber-500/50",
+      color: "text-cyan-300",
+      borderColor: "hover:border-cyan-400/50",
     },
   ];
 
@@ -41,7 +41,7 @@ export default function About() {
         
         {/* Header */}
         <div className="flex flex-col items-center text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
             <Code className="w-3.5 h-3.5" />
             <span>FULL-STACK WEB3 ARCHITECT</span>
           </div>
@@ -66,14 +66,14 @@ export default function About() {
           </div>
           <div className="max-w-3xl space-y-4 relative z-10">
             <h3 className="text-xl sm:text-2xl font-mono font-bold text-white flex items-center gap-2">
-              <Flame className="w-6 h-6 text-amber-400" />
+              <Flame className="w-6 h-6 text-cyan-400" />
               <span>Building, Trading & Advisory at Scale</span>
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
               Kelly is an independent Web3 builder and strategist. Having co-founded private Telegram cabals (<strong className="text-white">Based TG</strong>), founded decentralized communities (<strong className="text-white">Winners DAO</strong>), and launched marketing engines (<strong className="text-white">Based Marketing Agency</strong>), Kelly bridges technical engineering with high-impact Web3 growth.
             </p>
             <p className="text-gray-400 text-sm font-mono pt-2">
-              Holding full builder access on <span className="text-purple-300">Monad</span>, active membership in the <span className="text-emerald-300">Jito Cabal</span>, ambassador status at <span className="text-cyan-300">Plume Network</span>, and contributions to <span className="text-pink-300">OG Lab</span>, <span className="text-amber-300">Jupiter</span>, and <span className="text-blue-300">Arcium</span>.
+              Holding full builder access on <span className="text-cyan-300">Monad</span>, active membership in the <span className="text-blue-300">Jito Cabal</span>, ambassador status at <span className="text-sky-300">Plume Network</span>, and contributions to <span className="text-cyan-300">OG Lab</span>, <span className="text-blue-300">Jupiter</span>, and <span className="text-sky-300">Arcium</span>.
             </p>
           </div>
         </motion.div>

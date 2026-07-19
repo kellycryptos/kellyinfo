@@ -19,12 +19,12 @@ export default function CurrentlyShippingBadge() {
       >
         <div className="relative group">
           {/* Subtle Outer Neon Glow */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-full opacity-60 group-hover:opacity-100 blur-sm transition duration-300 animate-pulse"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-400 rounded-full opacity-60 group-hover:opacity-100 blur-sm transition duration-300 animate-pulse"></div>
 
           <div className="relative glass-panel rounded-full px-4 py-2 flex items-center gap-3 border border-white/10 bg-cyber-dark/90 backdrop-blur-md text-xs font-mono text-gray-200 shadow-2xl">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
             </span>
 
             <div className="flex items-center gap-1.5">
@@ -38,7 +38,7 @@ export default function CurrentlyShippingBadge() {
               href="#projects"
               className="text-cyan-400 hover:text-cyan-300 underline font-mono flex items-center gap-1 ml-1"
             >
-              <Sparkles className="w-3 h-3 text-purple-400" />
+              <Sparkles className="w-3 h-3 text-cyan-400" />
               View
             </a>
 

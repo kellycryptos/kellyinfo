@@ -11,7 +11,7 @@ export default function Highlights() {
       desc: "Built an autonomous AI agent for DAO proposal analysis, delegate voting alignment calculation, and payload execution in under 48 hours.",
       badge: "AI & DAOs",
       icon: Trophy,
-      color: "text-amber-400",
+      color: "text-cyan-400",
     },
     {
       title: "Lepton Web3 Hackathon",
@@ -19,7 +19,7 @@ export default function Highlights() {
       desc: "Architected a gasless multi-chain governance platform supporting automated AI agent proposals and treasury vaults.",
       badge: "DEFI & GOVERNANCE",
       icon: Flame,
-      color: "text-pink-400",
+      color: "text-blue-400",
     },
     {
       title: "Uniswap v4 Hook Challenge",
@@ -27,7 +27,7 @@ export default function Highlights() {
       desc: "Designed dynamic fee Uniswap v4 hooks on X Layer adjusting swap fees dynamically based on real-time World Cup match scores.",
       badge: "UNISWAP V4 HOOKS",
       icon: Zap,
-      color: "text-cyan-400",
+      color: "text-sky-400",
     },
   ];
 
@@ -37,12 +37,12 @@ export default function Highlights() {
         
         {/* Title */}
         <div className="flex flex-col items-center text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
             <Trophy className="w-3.5 h-3.5" />
             <span>TRACK RECORD & VELOCITY</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Hackathons & <span className="gradient-text-gold">Highlights</span>
+            Hackathons & <span className="gradient-text-cyan">Highlights</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
             Active hackathon competitor, rapid prototype builder, and open-source contributor.
@@ -86,16 +86,16 @@ export default function Highlights() {
           transition={{ duration: 0.6 }}
           className="relative rounded-3xl overflow-hidden glass-panel border border-cyan-500/30 p-8 md:p-12 text-center space-y-6"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-600/10 to-pink-500/10 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-blue-600/10 to-cyan-500/10 pointer-events-none"></div>
 
           <div className="relative z-10 max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
               <Users className="w-3.5 h-3.5" />
               <span>OPEN FOR OPPORTUNITIES</span>
             </div>
 
             <h3 className="text-2xl sm:text-4xl font-extrabold font-mono text-white">
-              Ready to build something <span className="gradient-text-purple">extraordinary onchain?</span>
+              Ready to build something <span className="gradient-text-blue">extraordinary onchain?</span>
             </h3>
 
             <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto">
@@ -105,7 +105,7 @@ export default function Highlights() {
             <div className="pt-2">
               <a
                 href="#connect"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-500 text-white font-mono font-bold text-sm shadow-xl shadow-cyan-500/20 hover:opacity-95 transition-opacity"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-bold text-sm shadow-xl shadow-cyan-500/20 hover:opacity-95 transition-opacity"
               >
                 <span>Initiate Contact</span>
                 <ArrowUpRight className="w-4 h-4" />

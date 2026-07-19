@@ -18,10 +18,9 @@ const config: Config = {
           card: "#121624",
           border: "#1e2638",
           cyan: "#00f0ff",
-          purple: "#a855f7",
-          pink: "#ff007a",
-          green: "#00ff9d",
-          yellow: "#ffe600",
+          blue: "#38bdf8",
+          deepBlue: "#0284c7",
+          sky: "#7dd3fc",
         },
       },
       fontFamily: {

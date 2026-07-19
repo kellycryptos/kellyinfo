@@ -20,8 +20,8 @@ export default function Ecosystem() {
       tag: "DAO FOUNDATION",
       desc: "Founded Winners DAO to drive community-led Web3 initiatives, proposal execution, and collective treasury growth.",
       icon: Crown,
-      color: "text-amber-400",
-      bgBorder: "border-amber-500/30 hover:border-amber-500/60",
+      color: "text-blue-400",
+      bgBorder: "border-blue-500/30 hover:border-blue-500/60",
     },
     {
       role: "Co-Founder",
@@ -29,8 +29,8 @@ export default function Ecosystem() {
       tag: "WEB3 MARKETING",
       desc: "Co-founded a specialized Web3 growth agency executing viral launch campaigns, tokenomics marketing, and community scale.",
       icon: Rocket,
-      color: "text-purple-400",
-      bgBorder: "border-purple-500/30 hover:border-purple-500/60",
+      color: "text-sky-400",
+      bgBorder: "border-sky-500/30 hover:border-sky-500/60",
     },
     {
       role: "Builder & Architect",
@@ -38,8 +38,8 @@ export default function Ecosystem() {
       tag: "SOVEREIGN INFRA",
       desc: "Architecting gasless dapps, governance platforms, and sovereign smart contract infrastructure on Arc.",
       icon: Compass,
-      color: "text-pink-400",
-      bgBorder: "border-pink-500/30 hover:border-pink-500/60",
+      color: "text-cyan-400",
+      bgBorder: "border-cyan-500/30 hover:border-cyan-500/60",
     },
     {
       role: "Ecosystem Creator",
@@ -47,8 +47,8 @@ export default function Ecosystem() {
       tag: "SOLANA DEFI",
       desc: "Recognized creator building on Jupiter DEX primitives, swap routes, and Solana DeFi tooling.",
       icon: Sparkles,
-      color: "text-emerald-400",
-      bgBorder: "border-emerald-500/30 hover:border-emerald-500/60",
+      color: "text-blue-300",
+      bgBorder: "border-blue-400/30 hover:border-blue-400/60",
     },
     {
       role: "Core Member",
@@ -56,8 +56,8 @@ export default function Ecosystem() {
       tag: "SOLANA MEV",
       desc: "Member of the Jito community focusing on MEV capture, block building efficiency, and liquid staking dynamics.",
       icon: Zap,
-      color: "text-yellow-400",
-      bgBorder: "border-yellow-500/30 hover:border-yellow-500/60",
+      color: "text-sky-300",
+      bgBorder: "border-sky-400/30 hover:border-sky-400/60",
     },
     {
       role: "Ecosystem Ambassador",
@@ -74,8 +74,8 @@ export default function Ecosystem() {
       tag: "HIGH PERF EVM",
       desc: "Granted early full builder access on Monad to construct parallelized EVM dapps and high-throughput tools.",
       icon: Eye,
-      color: "text-purple-300",
-      bgBorder: "border-purple-400/30 hover:border-purple-400/60",
+      color: "text-cyan-300",
+      bgBorder: "border-cyan-400/30 hover:border-cyan-400/60",
     },
     {
       role: "Core Contributor",
@@ -83,8 +83,8 @@ export default function Ecosystem() {
       tag: "CONFIDENTIAL COMPUTE",
       desc: "Contributing code, feedback, and architecture to confidential computing and AI infrastructure protocols.",
       icon: Code,
-      color: "text-rose-400",
-      bgBorder: "border-rose-500/30 hover:border-rose-500/60",
+      color: "text-blue-400",
+      bgBorder: "border-blue-500/30 hover:border-blue-500/60",
     },
     {
       role: "Fund Manager & Advisor",
@@ -92,8 +92,8 @@ export default function Ecosystem() {
       tag: "ADVISORY & TRADING",
       desc: "Active trader, liquidity provider, fund manager, and hands-on mentor for early-stage Web3 founders.",
       icon: TrendingUp,
-      color: "text-emerald-300",
-      bgBorder: "border-emerald-400/30 hover:border-emerald-400/60",
+      color: "text-cyan-400",
+      bgBorder: "border-cyan-500/30 hover:border-cyan-500/60",
     },
   ];
 
@@ -108,7 +108,7 @@ export default function Ecosystem() {
             <span>ROLES & ECOSYSTEM FOOTPRINT</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Ecosystem & <span className="gradient-text-purple">Contributions</span>
+            Ecosystem & <span className="gradient-text-cyan">Contributions</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
             High-signal leadership, cabal co-founding, protocol building, and advisory presence across Web3.
@@ -153,7 +153,7 @@ export default function Ecosystem() {
 
               <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono text-gray-400">
                 <span className="flex items-center gap-1">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> Active Contribution
+                  <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" /> Active Contribution
                 </span>
                 <span className="text-cyan-300 font-mono">Web3 Protocol</span>
               </div>

@@ -66,8 +66,8 @@ export default function ContentCreated() {
       metrics: "12,000+ Active Members Onboarded",
       link: "https://x.com/kellycryptos",
       icon: Rocket,
-      accentColor: "text-purple-400",
-      tagColor: "border-purple-500/30 text-purple-300 bg-purple-500/10",
+      accentColor: "text-blue-400",
+      tagColor: "border-blue-500/30 text-blue-300 bg-blue-500/10",
       date: "2026.05",
     },
     {
@@ -79,8 +79,8 @@ export default function ContentCreated() {
       metrics: "OKX AI Genesis Hackathon Winner",
       link: "https://github.com/kellycryptos/govcopilot",
       icon: Bot,
-      accentColor: "text-amber-400",
-      tagColor: "border-amber-500/30 text-amber-300 bg-amber-500/10",
+      accentColor: "text-sky-400",
+      tagColor: "border-sky-500/30 text-sky-300 bg-sky-500/10",
       date: "2026.04",
     },
     {
@@ -92,8 +92,8 @@ export default function ContentCreated() {
       metrics: "5,000+ Daily Active Users",
       link: "https://x.com/kellycryptos",
       icon: Layout,
-      accentColor: "text-emerald-400",
-      tagColor: "border-emerald-500/30 text-emerald-300 bg-emerald-500/10",
+      accentColor: "text-cyan-400",
+      tagColor: "border-cyan-500/30 text-cyan-300 bg-cyan-500/10",
       date: "2026.03",
     },
     {
@@ -105,8 +105,8 @@ export default function ContentCreated() {
       metrics: "85K+ Impressions • 600+ Bookmarks",
       link: "https://x.com/kellycryptos",
       icon: Twitter,
-      accentColor: "text-pink-400",
-      tagColor: "border-pink-500/30 text-pink-300 bg-pink-500/10",
+      accentColor: "text-blue-400",
+      tagColor: "border-blue-500/30 text-blue-300 bg-blue-500/10",
       date: "2026.02",
     },
   ];
@@ -122,12 +122,12 @@ export default function ContentCreated() {
         
         {/* Title */}
         <div className="flex flex-col items-center text-center space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
             <Share2 className="w-3.5 h-3.5" />
             <span>MEDIA, RESEARCH & TOOLS</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Content I Have <span className="gradient-text-purple">Created</span>
+            Content I Have <span className="gradient-text-blue">Created</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
             High-signal research threads, Telegram cabal digests, Web3 growth collateral, open-source AI tools, and community dashboards.
@@ -142,7 +142,7 @@ export default function ContentCreated() {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-mono transition-all ${
                 activeCategory === cat
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold shadow-lg shadow-purple-500/20"
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-lg shadow-cyan-500/20"
                   : "glass-panel hover:bg-white/5 text-gray-400 hover:text-gray-200 border border-white/10"
               }`}
             >
@@ -191,7 +191,7 @@ export default function ContentCreated() {
               {/* Footer / Link */}
               <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                 <span className="text-[11px] font-mono text-cyan-400 font-semibold flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-pink-400" />
+                  <Sparkles className="w-3 h-3 text-cyan-400" />
                   {item.metrics}
                 </span>
 
