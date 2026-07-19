@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Sparkles, X, Layers, Code } from "lucide-react";
+import { ExternalLink, Github, Sparkles, X, Layers, Code, Terminal, Cpu } from "lucide-react";
 
 export interface Project {
   id: string;
   name: string;
   tagline: string;
   desc: string;
-  image: string;
   liveUrl?: string;
   githubUrl: string;
   tech: string[];
@@ -27,7 +25,6 @@ export default function Projects() {
       name: "SynArc DAO",
       tagline: "Governance + Treasury Infrastructure for DAOs & AI Agents",
       desc: "Multi-chain governance platform powered by @synarc/agent-sdk supporting automated proposal execution, autonomous AI agent voting bots, and treasury management.",
-      image: "/images/synarc_dao.png",
       liveUrl: "https://synarcdao.xyz",
       githubUrl: "https://github.com/kellycryptos/synarc-dao",
       tech: ["@synarc/agent-sdk", "Next.js 15", "TypeScript", "Ethers.js", "Solidity"],
@@ -43,7 +40,6 @@ export default function Projects() {
       name: "Babel Markets",
       tagline: "AI Agentic Prediction Markets for Multilingual Signals",
       desc: "Automated prediction market engine parsing non-English global news streams with AI agents to create, settle, and market-make news-driven prediction pools.",
-      image: "/images/babel_markets.png",
       liveUrl: "https://babel-markets.vercel.app",
       githubUrl: "https://github.com/kellycryptos/babel-markets",
       tech: ["Next.js", "Groq AI", "viem", "Wagmi", "Tailwind CSS", "Polygon"],
@@ -59,7 +55,6 @@ export default function Projects() {
       name: "GovCoPilot",
       tagline: "Autonomous AI DAO Governance Co-Pilot Assistant",
       desc: "OKX AI Genesis Hackathon winner. GovCoPilot analyzes complex DAO proposals, calculates voting alignment vectors for delegates, and auto-executes votes onchain.",
-      image: "/images/govcopilot.png",
       liveUrl: "https://govcopilot.vercel.app",
       githubUrl: "https://github.com/kellycryptos/govcopilot",
       tech: ["Next.js 15", "Python", "OKX X Layer", "Groq LLM", "Ethers.js", "Tailwind CSS"],
@@ -75,7 +70,6 @@ export default function Projects() {
       name: "NFTHashFlash",
       tagline: "Fast Multi-Chain NFT Minting Telegram Bot",
       desc: "Ultra-fast Telegram bot allowing users to generate, mint, and pin metadata for multi-chain NFTs directly through chat commands in under 3 seconds.",
-      image: "/images/nfthashflash.png",
       githubUrl: "https://github.com/kellycryptos/nft-hash-flash",
       tech: ["Node.js", "Ethers.js", "Telegram Bot API", "Pinata IPFS", "Solana Web3"],
       badge: "TELEGRAM BOT",
@@ -90,7 +84,6 @@ export default function Projects() {
       name: "GoalHook FC ($GOAL)",
       tagline: "World Cup 2026 Uniswap v4 Dynamic Fee Hook",
       desc: "Uniswap v4 custom hook architecture on X Layer adjusting swap fees dynamically based on real-time live World Cup sports match events and goal triggers.",
-      image: "/images/goalhook.png",
       githubUrl: "https://github.com/kellycryptos/goalhook-fc",
       tech: ["Solidity", "Uniswap v4 Hooks", "Foundry", "OKX X Layer", "Chainlink Oracles"],
       badge: "UNISWAP V4 HOOK",
@@ -105,7 +98,6 @@ export default function Projects() {
       name: "Black Bull Oracle",
       tagline: "Groq-Powered Community AI Persona & Decentralized Oracle",
       desc: "Groq LLM-powered community AI persona combined with a high-frequency decentralized oracle engine providing low-latency volatility feeds across L2s.",
-      image: "/images/black_bull.png",
       liveUrl: "https://blackbulloracle.xyz",
       githubUrl: "https://github.com/kellycryptos/black-bull-oracle",
       tech: ["Groq LLM", "TypeScript", "Python", "Ethers.js", "Pyth Network", "Solidity"],
@@ -121,7 +113,6 @@ export default function Projects() {
       name: "Gov-Encrypt",
       tagline: "Confidential Governance on Solana with Arcium",
       desc: "Privacy-preserving governance protocol on Solana leveraging Arcium confidential computing MXE (Multi-Party Execution Engine) for encrypted delegate voting.",
-      image: "/images/gov_encrypt.png",
       githubUrl: "https://github.com/kellycryptos/gov-encrypt",
       tech: ["Arcium MXE", "Solana Anchor", "Rust", "TypeScript", "Zero-Knowledge"],
       badge: "CONFIDENTIAL DEFI",
@@ -147,69 +138,73 @@ export default function Projects() {
             What I Have <span className="gradient-text-cyan">Built</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
-            Visual showcase of 7 key protocols, AI agents, Telegram bots, and confidential DeFi primitives shipped across Web3.
+            Clean technical overview of key protocols, AI agents, Telegram bots, and confidential DeFi primitives shipped across Web3.
           </p>
         </div>
 
-        {/* 7 Shipped Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* 7 Shipped Projects Grid (Text-only cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {shippedProjects.map((project, idx) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.07 }}
-              whileHover={{ y: -6 }}
-              className="glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group"
+              transition={{ duration: 0.4, delay: idx * 0.06 }}
+              whileHover={{ y: -5 }}
+              className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/10 flex flex-col justify-between group space-y-5"
             >
-              <div>
-                {/* Thumbnail */}
-                <div className="relative h-56 w-full overflow-hidden bg-cyber-card">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-cyber-card via-transparent to-transparent"></div>
-                  
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 rounded-md bg-cyber-bg/90 border border-cyan-500/40 text-[10px] font-mono font-bold text-cyan-300 backdrop-blur-md shadow-lg">
-                      {project.badge}
-                    </span>
+              <div className="space-y-4">
+                {/* Header Tag + Terminal Icon */}
+                <div className="flex items-center justify-between">
+                  <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
+                    <Terminal className="w-5 h-5" />
                   </div>
+                  <span className="px-2.5 py-1 rounded-md bg-cyber-bg/90 border border-cyan-500/40 text-[10px] font-mono font-bold text-cyan-300 backdrop-blur-md">
+                    {project.badge}
+                  </span>
                 </div>
 
-                {/* Content */}
-                <div className="p-6 space-y-3">
-                  <h3 className="text-xl font-bold font-mono text-white group-hover:text-cyan-300 transition-colors flex items-center justify-between">
-                    <span>{project.name}</span>
+                {/* Name & Tagline */}
+                <div>
+                  <h3 className="text-xl font-bold font-mono text-white group-hover:text-cyan-300 transition-colors">
+                    {project.name}
                   </h3>
-                  
-                  <p className="text-xs font-mono text-cyan-300 font-semibold">
+                  <p className="text-xs font-mono text-cyan-300 font-semibold pt-1">
                     {project.tagline}
                   </p>
+                </div>
 
-                  <p className="text-xs text-gray-300 leading-relaxed line-clamp-3">
-                    {project.desc}
-                  </p>
+                {/* Description */}
+                <p className="text-xs text-gray-300 leading-relaxed font-sans">
+                  {project.desc}
+                </p>
 
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {project.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-gray-400"
-                      >
-                        {t}
-                      </span>
-                    ))}
+                {/* Architecture Bullets Preview */}
+                <div className="p-3 rounded-xl bg-cyber-bg/80 border border-white/5 space-y-1.5 text-[11px] font-mono text-gray-300">
+                  <div className="flex items-center gap-1.5 text-cyan-400 font-bold text-[10px] uppercase tracking-wider">
+                    <Cpu className="w-3 h-3" /> Core Highlight
                   </div>
+                  <p className="line-clamp-2 text-gray-300">
+                    {project.architectureDetails[0]}
+                  </p>
+                </div>
+
+                {/* Tech Badges */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-gray-400 group-hover:border-cyan-500/20 transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="p-6 pt-0 flex items-center justify-between gap-3 border-t border-white/5 mt-4">
+              <div className="pt-4 flex items-center justify-between gap-3 border-t border-white/5">
                 <button
                   onClick={() => setSelectedProject(project)}
                   className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-semibold group/btn"
@@ -246,7 +241,7 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Deep-Dive Modal */}
+      {/* Deep-Dive Modal (Text-only UI) */}
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
@@ -275,13 +270,17 @@ export default function Projects() {
                 </p>
               </div>
 
-              <div className="relative h-56 w-full rounded-xl overflow-hidden border border-white/10">
-                <Image
-                  src={selectedProject.image}
-                  alt={selectedProject.name}
-                  fill
-                  className="object-cover"
-                />
+              {/* Technical Banner replacing mock screenshot */}
+              <div className="p-5 rounded-2xl bg-cyber-bg border border-cyan-500/30 space-y-2 font-mono">
+                <div className="flex items-center justify-between text-xs text-cyan-400 font-bold uppercase tracking-wider">
+                  <span className="flex items-center gap-2">
+                    <Terminal className="w-4 h-4" /> System Specs & Protocol Flow
+                  </span>
+                  <span className="text-[10px] text-gray-400">ONCHAIN PRODUCTION</span>
+                </div>
+                <p className="text-xs text-gray-300 leading-relaxed font-sans pt-1">
+                  {selectedProject.desc}
+                </p>
               </div>
 
               <div className="space-y-3">
@@ -345,3 +344,4 @@ export default function Projects() {
     </section>
   );
 }
+

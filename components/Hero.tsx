@@ -1,18 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowDown, Zap, Sparkles, Copy, Check, Compass, ShieldCheck, Terminal, Send } from "lucide-react";
+import { ArrowDown, Compass, Terminal, Send } from "lucide-react";
 
 export default function Hero() {
-  const [copiedHandle, setCopiedHandle] = useState(false);
-
-  const copyHandle = () => {
-    navigator.clipboard.writeText("Kelly");
-    setCopiedHandle(true);
-    setTimeout(() => setCopiedHandle(false), 2000);
-  };
 
   return (
     <section className="relative min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-20 flex flex-col justify-center items-center overflow-hidden">
@@ -166,14 +158,6 @@ export default function Hero() {
                 <Send className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Get in Touch</span>
               </a>
-
-              <button
-                onClick={copyHandle}
-                className="p-3 sm:p-3.5 rounded-xl glass-panel hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white transition-colors"
-                title="Copy name Kelly"
-              >
-                {copiedHandle ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-              </button>
             </motion.div>
           </div>
 

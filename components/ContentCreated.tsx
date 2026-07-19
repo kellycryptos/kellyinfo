@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Twitter, Send, Rocket, Bot, Layout, ExternalLink, Sparkles, Flame, Eye, Share2, MessageCircle } from "lucide-react";
+import { Twitter, Send, Rocket, Bot, Layout, ExternalLink, Sparkles, Share2 } from "lucide-react";
 
 export interface ContentItem {
   id: string;
@@ -10,7 +10,7 @@ export interface ContentItem {
   category: "X Threads & Posts" | "Telegram Cabal" | "Marketing Assets" | "AI Tools & Dev" | "Community Dashboards";
   type: string;
   desc: string;
-  metrics?: string;
+  highlight: string;
   link: string;
   icon: any;
   accentColor: string;
@@ -37,7 +37,7 @@ export default function ContentCreated() {
       category: "X Threads & Posts",
       type: "VIRAL THREAD",
       desc: "Comprehensive 18-part thread breaking down Monad's optimistic parallel execution engine, MonadBFT consensus, and EVM compatibility benchmarks.",
-      metrics: "142K+ Views • 1.8K Retweets",
+      highlight: "Monad Architecture Spec",
       link: "https://x.com/kellycryptos",
       icon: Twitter,
       accentColor: "text-sky-400",
@@ -50,7 +50,7 @@ export default function ContentCreated() {
       category: "Telegram Cabal",
       type: "ALPHA DIGEST",
       desc: "Weekly high-signal research report for private Telegram cabal members covering high-conviction token unlocks, L2 ecosystem flows, and MEV arbitrage routes.",
-      metrics: "Private Cabal Exclusive",
+      highlight: "Private Cabal Exclusive",
       link: "https://t.me/kellycryptos",
       icon: Send,
       accentColor: "text-cyan-400",
@@ -63,7 +63,7 @@ export default function ContentCreated() {
       category: "Marketing Assets",
       type: "CAMPAIGN DECK",
       desc: "End-to-end launch collateral, tokenomics distribution graphics, and community growth funnel designed for Winners DAO mainnet opening.",
-      metrics: "12,000+ Active Members Onboarded",
+      highlight: "Community Launch Deck",
       link: "https://x.com/kellycryptos",
       icon: Rocket,
       accentColor: "text-blue-400",
@@ -76,7 +76,7 @@ export default function ContentCreated() {
       category: "AI Tools & Dev",
       type: "AI BENCHMARK",
       desc: "Video breakdown demonstrating how GovCoPilot parses multi-page DAO governance proposals and formulates automated voting vector recommendations.",
-      metrics: "OKX AI Genesis Hackathon Winner",
+      highlight: "OKX Hackathon Winner Spec",
       link: "https://github.com/kellycryptos/govcopilot",
       icon: Bot,
       accentColor: "text-sky-400",
@@ -89,7 +89,7 @@ export default function ContentCreated() {
       category: "Community Dashboards",
       type: "LIVE ANALYTICS",
       desc: "Real-time interactive dashboard visualizing Jito validator tips, liquid staking APY shifts, and Solana block space fee dynamics.",
-      metrics: "5,000+ Daily Active Users",
+      highlight: "Solana MEV Analytics",
       link: "https://x.com/kellycryptos",
       icon: Layout,
       accentColor: "text-cyan-400",
@@ -102,7 +102,7 @@ export default function ContentCreated() {
       category: "X Threads & Posts",
       type: "ECOSYSTEM THREAD",
       desc: "Detailed ecosystem map showcasing real-world asset yields, institutional vaults, and compliant DeFi primitive integrations on Plume Network.",
-      metrics: "85K+ Impressions • 600+ Bookmarks",
+      highlight: "Plume Ambassador Guide",
       link: "https://x.com/kellycryptos",
       icon: Twitter,
       accentColor: "text-blue-400",
@@ -192,7 +192,7 @@ export default function ContentCreated() {
               <div className="pt-4 border-t border-white/5 flex items-center justify-between">
                 <span className="text-[11px] font-mono text-cyan-400 font-semibold flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-cyan-400" />
-                  {item.metrics}
+                  {item.highlight}
                 </span>
 
                 <a
@@ -213,3 +213,4 @@ export default function ContentCreated() {
     </section>
   );
 }
+

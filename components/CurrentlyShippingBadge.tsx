@@ -35,7 +35,7 @@ export default function CurrentlyShippingBadge() {
             </div>
 
             <a
-              href="#projects"
+              href="#built"
               className="text-cyan-400 hover:text-cyan-300 underline font-mono flex items-center gap-1 ml-1"
             >
               <Sparkles className="w-3 h-3 text-cyan-400" />
