@@ -15,54 +15,26 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KELLY — Co-Founder, Builder, Trader & Advisor",
-  description: "Web3 architect, trader, fund manager, and co-founder across Based TG, Winners DAO, Based Marketing, Arc, Jupiter, Jito, Plume, Monad & Arcium.",
-  keywords: [
-    "Kelly",
-    "Co-Founder",
-    "Crypto Trader",
-    "Based TG",
-    "Winners DAO",
-    "Arc Architect",
-    "Jito Cabal",
-    "Plume Ambassador",
-    "Monad Full Access",
-    "Jupiter Creators",
-    "Arcium",
-  ],
-  authors: [{ name: "Kelly" }],
-  creator: "Kelly",
+  title: "Kelly — Web3 Builder & Architect",
+  description:
+    "Kelly is an independent Web3 builder, co-founder, trader and advisor operating at the intersection of DeFi, AI agents, and high-signal communities.",
+  keywords: ["Kelly", "Web3", "DeFi", "Blockchain", "Crypto", "Builder", "Architect", "DAO"],
   openGraph: {
-    title: "KELLY — Co-Founder • Builder • Trader • Advisor",
-    description: "Crypto architect turning vision into onchain reality across Solana, Base, Arc, Monad & Ethereum.",
-    url: "https://kellyinfo.vercel.app",
-    siteName: "Kelly Portfolio",
+    title: "Kelly — Web3 Builder & Architect",
+    description:
+      "Kelly is an independent Web3 builder, co-founder, trader and advisor operating at the intersection of DeFi, AI agents, and high-signal communities.",
     type: "website",
-    locale: "en_US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KELLY — Co-Founder • Builder • Trader • Advisor",
-    description: "Web3 architect, trader, fund manager & founder. Active across Based TG, Winners DAO, Jito, Monad, Arc & Plume.",
-    creator: "Kelly",
-  },
-  icons: {
-    icon: "/favicon.ico",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="dark scroll-smooth">
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-cyber-bg text-gray-100 antialiased selection:bg-cyan-500/30 selection:text-cyan-400`}
-      >
-        {children}
-      </body>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

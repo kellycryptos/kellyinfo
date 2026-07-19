@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Sparkles, X, Layers, Code, Terminal, Cpu } from "lucide-react";
+import { ExternalLink, Github, X, Terminal, Layers, Cpu } from "lucide-react";
 
-export interface Project {
+interface Project {
   id: string;
   name: string;
   tagline: string;
@@ -13,226 +13,209 @@ export interface Project {
   githubUrl: string;
   tech: string[];
   badge: string;
-  architectureDetails: string[];
+  details: string[];
 }
 
-export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 16 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
+});
 
-  const shippedProjects: Project[] = [
-    {
-      id: "synarc-dao",
-      name: "SynArc DAO",
-      tagline: "Governance + Treasury Infrastructure for DAOs & AI Agents",
-      desc: "Multi-chain governance platform powered by @synarc/agent-sdk supporting automated proposal execution, autonomous AI agent voting bots, and treasury management.",
-      liveUrl: "https://synarcdao.xyz",
-      githubUrl: "https://github.com/kellycryptos/synarc-dao",
-      tech: ["@synarc/agent-sdk", "Next.js 15", "TypeScript", "Ethers.js", "Solidity"],
-      badge: "LIVE PROTOCOL",
-      architectureDetails: [
-        "Powered by @synarc/agent-sdk for autonomous agent proposal analysis & voting.",
-        "Gasless proposal delegation powered by Paymasters & ERC-4337 smart accounts.",
-        "Multi-sig treasury vault management across Base, Arc, and Ethereum L2s.",
-      ],
-    },
-    {
-      id: "babel-markets",
-      name: "Babel Markets",
-      tagline: "AI Agentic Prediction Markets for Multilingual Signals",
-      desc: "Automated prediction market engine parsing non-English global news streams with AI agents to create, settle, and market-make news-driven prediction pools.",
-      liveUrl: "https://babel-markets.vercel.app",
-      githubUrl: "https://github.com/kellycryptos/babel-markets",
-      tech: ["Next.js", "Groq AI", "viem", "Wagmi", "Tailwind CSS", "Polygon"],
-      badge: "LIVE APP",
-      architectureDetails: [
-        "Autonomous AI scrapers monitor multilingual news sources (Spanish, Mandarin, Japanese, Arabic).",
-        "LLM market creation engine generates binary and categorical prediction pools automatically.",
-        "Gasless cross-chain settlements using Circle CCTP liquidity bridges.",
-      ],
-    },
-    {
-      id: "govcopilot",
-      name: "GovCoPilot",
-      tagline: "Autonomous AI DAO Governance Co-Pilot Assistant",
-      desc: "OKX AI Genesis Hackathon winner. GovCoPilot analyzes complex DAO proposals, calculates voting alignment vectors for delegates, and auto-executes votes onchain.",
-      liveUrl: "https://govcopilot.vercel.app",
-      githubUrl: "https://github.com/kellycryptos/govcopilot",
-      tech: ["Next.js 15", "Python", "OKX X Layer", "Groq LLM", "Ethers.js", "Tailwind CSS"],
-      badge: "OKX HACKATHON WINNER",
-      architectureDetails: [
-        "Vector database semantic search indexing proposal histories and delegate manifestos.",
-        "Groq Llama-3 70B fine-tuned agent calculating voting alignment vectors in real time.",
-        "Automated multi-chain vote execution with paymaster gas sponsorship.",
-      ],
-    },
-    {
-      id: "nft-hash-flash",
-      name: "NFTHashFlash",
-      tagline: "Fast Multi-Chain NFT Minting Telegram Bot",
-      desc: "Ultra-fast Telegram bot allowing users to generate, mint, and pin metadata for multi-chain NFTs directly through chat commands in under 3 seconds.",
-      githubUrl: "https://github.com/kellycryptos/nft-hash-flash",
-      tech: ["Node.js", "Ethers.js", "Telegram Bot API", "Pinata IPFS", "Solana Web3"],
-      badge: "TELEGRAM BOT",
-      architectureDetails: [
-        "Sub-second metadata pinning using dedicated Pinata IPFS gateways.",
-        "Optimized gas estimation for priority transaction inclusions on Solana & EVM.",
-        "Built-in wallet encryption with instant telegram export key commands.",
-      ],
-    },
-    {
-      id: "goalhook-fc",
-      name: "GoalHook FC ($GOAL)",
-      tagline: "World Cup 2026 Uniswap v4 Dynamic Fee Hook",
-      desc: "Uniswap v4 custom hook architecture on X Layer adjusting swap fees dynamically based on real-time live World Cup sports match events and goal triggers.",
-      githubUrl: "https://github.com/kellycryptos/goalhook-fc",
-      tech: ["Solidity", "Uniswap v4 Hooks", "Foundry", "OKX X Layer", "Chainlink Oracles"],
-      badge: "UNISWAP V4 HOOK",
-      architectureDetails: [
-        "Custom beforeSwap() hook calculation adjusting swap fees dynamically between 0.05% and 3.00%.",
-        "Chainlink Functions integration pulling real-time football match scores onchain.",
-        "Sub-second liquidity pool re-balancing during goal scoring events.",
-      ],
-    },
-    {
-      id: "black-bull-oracle",
-      name: "Black Bull Oracle",
-      tagline: "Groq-Powered Community AI Persona & Decentralized Oracle",
-      desc: "Groq LLM-powered community AI persona combined with a high-frequency decentralized oracle engine providing low-latency volatility feeds across L2s.",
-      liveUrl: "https://blackbulloracle.xyz",
-      githubUrl: "https://github.com/kellycryptos/black-bull-oracle",
-      tech: ["Groq LLM", "TypeScript", "Python", "Ethers.js", "Pyth Network", "Solidity"],
-      badge: "AI PERSONA & ORACLE",
-      architectureDetails: [
-        "Groq Llama-3 real-time sentiment & market signal processing persona.",
-        "Multi-node WebSocket price aggregation with outlier rejection algorithms.",
-        "Sub-hundred millisecond oracle updates deployed on Base and Arc.",
-      ],
-    },
-    {
-      id: "gov-encrypt",
-      name: "Gov-Encrypt",
-      tagline: "Confidential Governance on Solana with Arcium",
-      desc: "Privacy-preserving governance protocol on Solana leveraging Arcium confidential computing MXE (Multi-Party Execution Engine) for encrypted delegate voting.",
-      githubUrl: "https://github.com/kellycryptos/gov-encrypt",
-      tech: ["Arcium MXE", "Solana Anchor", "Rust", "TypeScript", "Zero-Knowledge"],
-      badge: "CONFIDENTIAL DEFI",
-      architectureDetails: [
-        "Encrypted vote payloads processed in Arcium Multi-Party Execution Environments.",
-        "Zero-knowledge proof verification of delegate voting weights without revealing individual choices.",
-        "Anchor Rust smart contract program deployed on Solana devnet & testnet.",
-      ],
-    },
-  ];
+const projects: Project[] = [
+  {
+    id: "synarc-dao",
+    name: "SynArc DAO",
+    tagline: "Governance + Treasury Infrastructure",
+    desc: "Multi-chain governance platform with automated proposal execution, autonomous AI agent voting bots, and treasury management.",
+    liveUrl: "https://synarcdao.xyz",
+    githubUrl: "https://github.com/kellycryptos/synarc-dao",
+    tech: ["Next.js 15", "Ethers.js", "Solidity", "ERC-4337"],
+    badge: "LIVE PROTOCOL",
+    details: [
+      "Autonomous agent proposal analysis & voting via @synarc/agent-sdk.",
+      "Gasless delegation powered by Paymasters & ERC-4337 smart accounts.",
+      "Multi-sig treasury vault management across Base, Arc, and Ethereum L2s.",
+    ],
+  },
+  {
+    id: "babel-markets",
+    name: "Babel Markets",
+    tagline: "AI Agentic Prediction Markets",
+    desc: "Automated prediction market engine parsing non-English news streams with AI agents to create and settle news-driven prediction pools.",
+    liveUrl: "https://babel-markets.vercel.app",
+    githubUrl: "https://github.com/kellycryptos/babel-markets",
+    tech: ["Next.js", "Groq AI", "viem", "Polygon"],
+    badge: "LIVE APP",
+    details: [
+      "Autonomous AI scrapers monitor multilingual news (Spanish, Mandarin, Japanese, Arabic).",
+      "LLM market creation engine generates binary prediction pools automatically.",
+      "Gasless cross-chain settlements using Circle CCTP liquidity bridges.",
+    ],
+  },
+  {
+    id: "govcopilot",
+    name: "GovCoPilot",
+    tagline: "Autonomous AI DAO Governance Co-Pilot",
+    desc: "OKX AI Genesis Hackathon winner. Analyzes DAO proposals, calculates voting alignment vectors, and auto-executes votes onchain.",
+    liveUrl: "https://govcopilot.vercel.app",
+    githubUrl: "https://github.com/kellycryptos/govcopilot",
+    tech: ["Next.js 15", "Python", "Groq LLM", "OKX X Layer"],
+    badge: "HACKATHON WINNER",
+    details: [
+      "Vector database semantic search indexing proposal histories and delegate manifestos.",
+      "Groq Llama-3 70B agent calculating voting alignment vectors in real time.",
+      "Automated multi-chain vote execution with paymaster gas sponsorship.",
+    ],
+  },
+  {
+    id: "nft-hash-flash",
+    name: "NFTHashFlash",
+    tagline: "Fast Multi-Chain NFT Minting Bot",
+    desc: "Ultra-fast Telegram bot allowing users to generate, mint, and pin metadata for multi-chain NFTs directly through chat commands in under 3 seconds.",
+    githubUrl: "https://github.com/kellycryptos/nft-hash-flash",
+    tech: ["Node.js", "Ethers.js", "Telegram Bot API", "Pinata IPFS"],
+    badge: "TELEGRAM BOT",
+    details: [
+      "Sub-second metadata pinning using dedicated Pinata IPFS gateways.",
+      "Optimized gas estimation for priority transaction inclusions on Solana & EVM.",
+      "Built-in wallet encryption with instant telegram export key commands.",
+    ],
+  },
+  {
+    id: "goalhook-fc",
+    name: "GoalHook FC",
+    tagline: "World Cup 2026 Uniswap v4 Hook",
+    desc: "Uniswap v4 custom hook architecture adjusting swap fees dynamically based on real-time live World Cup sports match events and goal triggers.",
+    githubUrl: "https://github.com/kellycryptos/goalhook-fc",
+    tech: ["Solidity", "Uniswap v4", "Foundry", "Chainlink"],
+    badge: "V4 HOOK",
+    details: [
+      "Custom beforeSwap() hook adjusting fees dynamically between 0.05% and 3.00%.",
+      "Chainlink Functions integration pulling real-time football match scores onchain.",
+      "Sub-second liquidity pool re-balancing during goal scoring events.",
+    ],
+  },
+  {
+    id: "black-bull-oracle",
+    name: "Black Bull Oracle",
+    tagline: "Groq-Powered AI Oracle Engine",
+    desc: "Groq LLM-powered community AI persona combined with a high-frequency decentralized oracle engine providing low-latency volatility feeds across L2s.",
+    liveUrl: "https://blackbulloracle.xyz",
+    githubUrl: "https://github.com/kellycryptos/black-bull-oracle",
+    tech: ["Groq LLM", "TypeScript", "Pyth Network", "Solidity"],
+    badge: "AI + ORACLE",
+    details: [
+      "Groq Llama-3 real-time sentiment & market signal processing persona.",
+      "Multi-node WebSocket price aggregation with outlier rejection algorithms.",
+      "Sub-hundred millisecond oracle updates deployed on Base and Arc.",
+    ],
+  },
+  {
+    id: "gov-encrypt",
+    name: "Gov-Encrypt",
+    tagline: "Confidential Governance on Solana",
+    desc: "Privacy-preserving governance protocol leveraging Arcium confidential computing MXE for encrypted delegate voting on Solana.",
+    githubUrl: "https://github.com/kellycryptos/gov-encrypt",
+    tech: ["Arcium MXE", "Solana Anchor", "Rust", "ZK Proofs"],
+    badge: "CONFIDENTIAL DEFI",
+    details: [
+      "Encrypted vote payloads processed in Arcium Multi-Party Execution Environments.",
+      "Zero-knowledge proof verification of delegate voting weights.",
+      "Anchor Rust smart contract program deployed on Solana devnet & testnet.",
+    ],
+  },
+];
+
+export default function Projects() {
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="built" className="py-24 relative z-10 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Title */}
-        <div className="flex flex-col items-center text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
-            <Code className="w-3.5 h-3.5" />
-            <span>SHIPPED PRODUCTS & PROTOCOLS</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            What I Have <span className="gradient-text-cyan">Built</span>
+    <section id="built" className="py-20 section-divider relative z-10">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+
+        {/* Header */}
+        <motion.div {...fadeUp(0)} className="mb-12 max-w-xl">
+          <span className="badge mb-4">Shipped Products & Protocols</span>
+          <h2 className="font-mono font-black text-4xl sm:text-5xl text-white leading-tight mb-3">
+            What I Have <span className="gradient-text">Built</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
-            Clean technical overview of key protocols, AI agents, Telegram bots, and confidential DeFi primitives shipped across Web3.
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Key protocols, AI agents, Telegram bots, and confidential DeFi primitives shipped across Web3.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 7 Shipped Projects Grid (Text-only cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {shippedProjects.map((project, idx) => (
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {projects.map((p, i) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.06 }}
-              whileHover={{ y: -5 }}
-              className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/10 flex flex-col justify-between group space-y-5"
+              key={p.id}
+              {...fadeUp(i * 0.05)}
+              whileHover={{ y: -4 }}
+              className="glass glass-hover border border-white/6 rounded-2xl p-5 flex flex-col gap-4 group cursor-pointer"
+              onClick={() => setSelected(p)}
             >
-              <div className="space-y-4">
-                {/* Header Tag + Terminal Icon */}
-                <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-xl bg-white/5 border border-white/10 text-cyan-400 group-hover:border-cyan-500/40 transition-colors">
-                    <Terminal className="w-5 h-5" />
-                  </div>
-                  <span className="px-2.5 py-1 rounded-md bg-cyber-bg/90 border border-cyan-500/40 text-[10px] font-mono font-bold text-cyan-300 backdrop-blur-md">
-                    {project.badge}
+              {/* Top row */}
+              <div className="flex items-center justify-between">
+                <div className="p-2 rounded-lg bg-white/5 border border-white/8 text-cyan-400 group-hover:border-cyan-500/30 transition-colors">
+                  <Terminal className="w-4 h-4" />
+                </div>
+                <span className="tag">{p.badge}</span>
+              </div>
+
+              {/* Name + tagline */}
+              <div>
+                <h3 className="font-mono font-bold text-base text-white group-hover:text-cyan-300 transition-colors mb-1">
+                  {p.name}
+                </h3>
+                <p className="text-[11px] font-mono text-cyan-400/80">{p.tagline}</p>
+              </div>
+
+              {/* Desc */}
+              <p className="text-xs text-gray-400 leading-relaxed flex-1">{p.desc}</p>
+
+              {/* Core highlight */}
+              <div className="p-3 rounded-lg bg-black/20 border border-white/5 text-[11px] font-mono text-gray-400 line-clamp-2">
+                <span className="text-cyan-500 font-bold">▸ </span>
+                {p.details[0]}
+              </div>
+
+              {/* Tech */}
+              <div className="flex flex-wrap gap-1.5">
+                {p.tech.map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded bg-white/4 border border-white/8 text-[10px] font-mono text-gray-500">
+                    {t}
                   </span>
-                </div>
-
-                {/* Name & Tagline */}
-                <div>
-                  <h3 className="text-xl font-bold font-mono text-white group-hover:text-cyan-300 transition-colors">
-                    {project.name}
-                  </h3>
-                  <p className="text-xs font-mono text-cyan-300 font-semibold pt-1">
-                    {project.tagline}
-                  </p>
-                </div>
-
-                {/* Description */}
-                <p className="text-xs text-gray-300 leading-relaxed font-sans">
-                  {project.desc}
-                </p>
-
-                {/* Architecture Bullets Preview */}
-                <div className="p-3 rounded-xl bg-cyber-bg/80 border border-white/5 space-y-1.5 text-[11px] font-mono text-gray-300">
-                  <div className="flex items-center gap-1.5 text-cyan-400 font-bold text-[10px] uppercase tracking-wider">
-                    <Cpu className="w-3 h-3" /> Core Highlight
-                  </div>
-                  <p className="line-clamp-2 text-gray-300">
-                    {project.architectureDetails[0]}
-                  </p>
-                </div>
-
-                {/* Tech Badges */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-gray-400 group-hover:border-cyan-500/20 transition-colors"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                ))}
               </div>
 
               {/* Actions */}
-              <div className="pt-4 flex items-center justify-between gap-3 border-t border-white/5">
-                <button
-                  onClick={() => setSelectedProject(project)}
-                  className="text-xs font-mono text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-semibold group/btn"
-                >
-                  <span>Architecture Deep-Dive</span>
-                  <Sparkles className="w-3.5 h-3.5 group-hover/btn:rotate-12 transition-transform" />
+              <div className="flex items-center justify-between pt-1 border-t border-white/5">
+                <button className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
+                  <Layers className="w-3 h-3" />
+                  Deep Dive
                 </button>
-
-                <div className="flex items-center gap-2">
-                  {project.liveUrl && (
+                <div className="flex items-center gap-1.5">
+                  {p.liveUrl && (
                     <a
-                      href={project.liveUrl}
+                      href={p.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-colors"
-                      title="Live Demo"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-1.5 rounded-lg bg-cyan-500/8 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/20 transition-colors"
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </a>
                   )}
                   <a
-                    href={project.githubUrl}
+                    href={p.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 border border-white/10 transition-colors"
-                    title="Source Code"
+                    onClick={(e) => e.stopPropagation()}
+                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 border border-white/8 transition-colors"
                   >
-                    <Github className="w-4 h-4" />
+                    <Github className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
@@ -241,100 +224,86 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Deep-Dive Modal (Text-only UI) */}
+      {/* Modal */}
       <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        {selected && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+            onClick={() => setSelected(null)}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="relative w-full max-w-2xl glass-panel bg-cyber-dark/95 border border-cyan-500/40 rounded-3xl p-6 md:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+              exit={{ opacity: 0, scale: 0.95, y: 16 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full max-w-xl glass border border-cyan-500/25 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-5 max-h-[88vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
             >
               <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
+                onClick={() => setSelected(null)}
+                className="absolute top-4 right-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
 
-              <div className="space-y-2">
-                <div className="inline-block px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
-                  {selectedProject.badge}
-                </div>
-                <h3 className="text-2xl font-bold font-mono text-white">
-                  {selectedProject.name} Architecture
-                </h3>
-                <p className="text-sm font-mono text-cyan-300">
-                  {selectedProject.tagline}
-                </p>
+              <div>
+                <span className="badge mb-3">{selected.badge}</span>
+                <h3 className="font-mono font-black text-2xl text-white mt-2">{selected.name}</h3>
+                <p className="text-xs font-mono text-cyan-400 mt-1">{selected.tagline}</p>
               </div>
 
-              {/* Technical Banner replacing mock screenshot */}
-              <div className="p-5 rounded-2xl bg-cyber-bg border border-cyan-500/30 space-y-2 font-mono">
-                <div className="flex items-center justify-between text-xs text-cyan-400 font-bold uppercase tracking-wider">
-                  <span className="flex items-center gap-2">
-                    <Terminal className="w-4 h-4" /> System Specs & Protocol Flow
-                  </span>
-                  <span className="text-[10px] text-gray-400">ONCHAIN PRODUCTION</span>
+              <div className="p-4 rounded-xl bg-black/25 border border-white/6">
+                <div className="flex items-center gap-2 text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest mb-2">
+                  <Terminal className="w-3.5 h-3.5" />
+                  System Overview
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed font-sans pt-1">
-                  {selectedProject.desc}
-                </p>
+                <p className="text-xs text-gray-300 leading-relaxed">{selected.desc}</p>
               </div>
 
-              <div className="space-y-3">
-                <h4 className="text-sm font-bold font-mono text-white uppercase tracking-wider flex items-center gap-2">
-                  <Layers className="w-4 h-4 text-cyan-400" />
-                  Technical Implementation Highlights
-                </h4>
+              <div>
+                <div className="flex items-center gap-2 text-xs font-mono text-white font-bold uppercase tracking-wider mb-3">
+                  <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+                  Technical Highlights
+                </div>
                 <ul className="space-y-2">
-                  {selectedProject.architectureDetails.map((detail, i) => (
-                    <li
-                      key={i}
-                      className="p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-gray-300 font-mono flex items-start gap-2.5"
-                    >
-                      <span className="text-cyan-400 font-bold">0{i + 1}.</span>
-                      <span>{detail}</span>
+                  {selected.details.map((d, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-xs text-gray-300 font-mono p-3 rounded-lg bg-white/4 border border-white/6">
+                      <span className="text-cyan-400 font-bold flex-shrink-0">0{i + 1}.</span>
+                      {d}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="space-y-2">
-                <div className="text-xs font-mono text-gray-400">Deployed Stack:</div>
+              <div>
+                <p className="text-[10px] font-mono text-gray-500 mb-2">Stack</p>
                 <div className="flex flex-wrap gap-2">
-                  {selectedProject.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300"
-                    >
+                  {selected.tech.map((t) => (
+                    <span key={t} className="px-2.5 py-1 rounded-lg bg-cyan-500/8 border border-cyan-500/20 text-xs font-mono text-cyan-300">
                       {t}
                     </span>
                   ))}
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-4 pt-4 border-t border-white/10">
-                {selectedProject.liveUrl && (
+              <div className="flex flex-wrap gap-3 pt-2 border-t border-white/6">
+                {selected.liveUrl && (
                   <a
-                    href={selectedProject.liveUrl}
+                    href={selected.liveUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-bold text-xs hover:opacity-90 transition-opacity"
+                    className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-bold text-xs hover:opacity-90 transition-opacity"
                   >
-                    <span>Launch Live App</span>
-                    <ExternalLink className="w-4 h-4" />
+                    Launch App <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 )}
                 <a
-                  href={selectedProject.githubUrl}
+                  href={selected.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 font-mono font-bold text-xs transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-200 font-mono font-bold text-xs transition-colors"
                 >
-                  <span>View GitHub Repository</span>
-                  <Github className="w-4 h-4" />
+                  GitHub <Github className="w-3.5 h-3.5" />
                 </a>
               </div>
             </motion.div>
@@ -344,4 +313,3 @@ export default function Projects() {
     </section>
   );
 }
-

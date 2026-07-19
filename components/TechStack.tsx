@@ -1,105 +1,109 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Cpu, Terminal, Shield, Zap, Globe, Server, Layers } from "lucide-react";
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
+});
+
+const stack = [
+  // Frontend
+  { name: "Next.js 15", cat: "Frontend", color: "text-white" },
+  { name: "TypeScript", cat: "Frontend", color: "text-blue-400" },
+  { name: "Tailwind CSS", cat: "Frontend", color: "text-cyan-400" },
+  { name: "Framer Motion", cat: "Frontend", color: "text-sky-400" },
+  // Web3
+  { name: "viem / ethers.js", cat: "Web3", color: "text-cyan-300" },
+  { name: "Circle CCTP", cat: "Web3", color: "text-blue-300" },
+  { name: "ERC-4337", cat: "Web3", color: "text-sky-400" },
+  { name: "Solana Web3.js", cat: "Web3", color: "text-green-400" },
+  // AI & Agents
+  { name: "Groq Llama-3", cat: "AI & Agents", color: "text-cyan-400" },
+  { name: "Custom Agent SDKs", cat: "AI & Agents", color: "text-blue-300" },
+  { name: "x402 Nanopayments", cat: "AI & Agents", color: "text-sky-300" },
+  // Infra & Chains
+  { name: "Node.js / Express", cat: "Infra", color: "text-cyan-400" },
+  { name: "Vercel / Render", cat: "Infra", color: "text-white" },
+  { name: "Pinata / IPFS", cat: "Infra", color: "text-cyan-300" },
+  { name: "Solidity / Rust", cat: "Infra", color: "text-orange-400" },
+  // Chains
+  { name: "Base Mainnet", cat: "Chains", color: "text-blue-400" },
+  { name: "Solana", cat: "Chains", color: "text-green-400" },
+  { name: "Arc Ecosystem", cat: "Chains", color: "text-cyan-400" },
+  { name: "OKX X Layer", cat: "Chains", color: "text-blue-300" },
+  { name: "Monad", cat: "Chains", color: "text-purple-400" },
+];
+
+const categories = [
+  { label: "Frontend", color: "text-blue-400", border: "border-blue-500/20" },
+  { label: "Web3", color: "text-cyan-400", border: "border-cyan-500/20" },
+  { label: "AI & Agents", color: "text-sky-400", border: "border-sky-500/20" },
+  { label: "Infra", color: "text-gray-300", border: "border-white/15" },
+  { label: "Chains", color: "text-purple-400", border: "border-purple-500/20" },
+];
 
 export default function TechStack() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
-
-  const categories = ["All", "Frontend", "Web3 & Smart Accounts", "AI & Autonomous Agents", "Infra & Chains"];
-
-  const stackItems = [
-    // Frontend
-    { name: "Next.js 15", category: "Frontend", level: "Expert", desc: "App Router, SSR, Turbopack, Server Actions", color: "text-white" },
-    { name: "TypeScript", category: "Frontend", level: "Expert", desc: "Strict typing, generics, robust APIs", color: "text-blue-400" },
-    { name: "Tailwind CSS", category: "Frontend", level: "Expert", desc: "Custom themes, cyber tokens, dark mode", color: "text-cyan-400" },
-    { name: "Framer Motion", category: "Frontend", level: "Advanced", desc: "Parallax, 3D tilts, micro-animations", color: "text-sky-400" },
-
-    // Web3
-    { name: "viem / ethers.js", category: "Web3 & Smart Accounts", level: "Expert", desc: "Contract interactions, ABI encoding, RPCs", color: "text-cyan-300" },
-    { name: "Circle Primitives & CCTP", category: "Web3 & Smart Accounts", level: "Advanced", desc: "Cross-chain USDC transfers & settlement", color: "text-blue-300" },
-    { name: "ERC-4337 Smart Accounts", category: "Web3 & Smart Accounts", level: "Advanced", desc: "Account abstraction, paymasters, session keys", color: "text-sky-400" },
-
-    // AI & Agents
-    { name: "Groq Llama-3", category: "AI & Autonomous Agents", level: "Expert", desc: "Ultra-fast inference for real-time agent responses", color: "text-cyan-400" },
-    { name: "Custom Agent SDKs", category: "AI & Autonomous Agents", level: "Advanced", desc: "Tool calling, memory state, web scraping", color: "text-blue-300" },
-    { name: "x402 Nanopayments", category: "AI & Autonomous Agents", level: "Pioneer", desc: "Agent-to-agent HTTP 402 micro-transactions", color: "text-sky-300" },
-
-    // Infra & Chains
-    { name: "Node.js & Express", category: "Infra & Chains", level: "Expert", desc: "Backend Telegram bots & microservices", color: "text-cyan-400" },
-    { name: "Vercel & Render", category: "Infra & Chains", level: "Expert", desc: "Edge deployments & continuous integration", color: "text-white" },
-    { name: "Pinata / IPFS", category: "Infra & Chains", level: "Advanced", desc: "Decentralized metadata storage & gateways", color: "text-cyan-300" },
-
-    // Ecosystems
-    { name: "Arc Ecosystem", category: "Infra & Chains", level: "Native", desc: "Scalable sovereign chain infrastructure", color: "text-cyan-400" },
-    { name: "Base Mainnet", category: "Infra & Chains", level: "Native", desc: "Low-cost EVM L2 dapps & social apps", color: "text-blue-400" },
-    { name: "Solana Web3", category: "Infra & Chains", level: "Native", desc: "Anchor, SPL tokens, fast transaction bots", color: "text-sky-400" },
-    { name: "OKX X Layer", category: "Infra & Chains", level: "Native", desc: "Uniswap v4 dynamic hooks & liquidity", color: "text-blue-300" },
-  ];
-
-  const filteredItems =
-    activeCategory === "All"
-      ? stackItems
-      : stackItems.filter((item) => item.category === activeCategory);
-
   return (
-    <section id="tech-stack" className="py-24 relative z-10 border-t border-white/5 bg-cyber-bg/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Title */}
-        <div className="flex flex-col items-center text-center space-y-3 mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>PRODUCTION ARSENAL</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Tech <span className="gradient-text-cyan">Stack</span>
+    <section id="tech-stack" className="py-20 section-divider relative z-10">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+
+        {/* Header */}
+        <motion.div {...fadeUp(0)} className="mb-12 max-w-xl">
+          <span className="badge mb-4">Production Arsenal</span>
+          <h2 className="font-mono font-black text-4xl sm:text-5xl text-white leading-tight mb-3">
+            Tech <span className="gradient-text">Stack</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl text-base sm:text-lg">
-            Modern full-stack Web3 & AI tooling optimized for speed, security, and gasless UX.
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Modern full-stack Web3 & AI tooling optimised for speed, security, and gasless UX.
           </p>
+        </motion.div>
+
+        {/* Category rows */}
+        <div className="space-y-8">
+          {categories.map((cat, ci) => {
+            const items = stack.filter((s) => s.cat === cat.label);
+            return (
+              <motion.div key={cat.label} {...fadeUp(ci * 0.06)}>
+                <div className={`flex items-center gap-2 mb-3 text-[10px] font-mono font-bold uppercase tracking-widest ${cat.color}`}>
+                  <span className={`block w-4 h-px bg-current opacity-60`} />
+                  {cat.label}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {items.map((item) => (
+                    <span
+                      key={item.name}
+                      className={`px-3 py-1.5 rounded-lg glass border ${cat.border} text-xs font-mono ${item.color} hover:scale-105 transition-transform cursor-default`}
+                    >
+                      {item.name}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs font-mono transition-all ${
-                activeCategory === cat
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-lg shadow-cyan-500/20"
-                  : "glass-panel hover:bg-white/5 text-gray-400 hover:text-gray-200 border border-white/10"
-              }`}
-            >
-              {cat}
-            </button>
+        {/* Bottom stat strip */}
+        <motion.div
+          {...fadeUp(0.35)}
+          className="mt-12 glass rounded-2xl border border-white/6 p-6 flex flex-wrap gap-6 items-center justify-between"
+        >
+          {[
+            { label: "Chains Deployed On", value: "7+" },
+            { label: "Smart Contracts Shipped", value: "15+" },
+            { label: "AI Agents Built", value: "5+" },
+            { label: "Hackathons Won", value: "1" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col gap-0.5">
+              <span className="font-mono font-black text-2xl text-neon">{stat.value}</span>
+              <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">{stat.label}</span>
+            </div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Stack Items Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {filteredItems.map((item, idx) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
-              className="glass-panel glass-panel-hover p-5 rounded-2xl border border-white/10 space-y-2 relative group"
-            >
-              <div className="flex items-center justify-between">
-                <span className={`text-sm font-bold font-mono ${item.color}`}>
-                  {item.name}
-                </span>
-                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 border border-white/10 text-cyan-400">
-                  {item.level}
-                </span>
-              </div>
-              <p className="text-xs text-gray-400 leading-relaxed font-sans">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

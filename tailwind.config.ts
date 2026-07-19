@@ -10,50 +10,63 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#08090d",
-        foreground: "#f3f4f6",
+        background: "#080b12",
+        foreground: "#e2e8f0",
         cyber: {
-          bg: "#08090d",
-          surface: "#0d0f17",
-          card: "#121624",
-          border: "#1e2638",
-          cyan: "#00f0ff",
-          blue: "#38bdf8",
-          deepBlue: "#0284c7",
-          sky: "#7dd3fc",
+          bg: "#080b12",
+          surface: "#0a0c14",
+          card: "#0d1120",
+          border: "#1a2035",
+          cyan: "#00e5ff",
+          blue: "#3b82f6",
+          deepBlue: "#2563eb",
+          sky: "#60a5fa",
+          dark: "#060810",
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "monospace"],
+      },
+      fontSize: {
+        "2xs": ["10px", { lineHeight: "1.4" }],
       },
       animation: {
         "pulse-glow": "pulseGlow 3s infinite ease-in-out",
-        "float": "float 4s infinite ease-in-out",
-        "grid-scan": "gridScan 10s linear infinite",
-        "border-beam": "borderBeam 6s linear infinite",
+        "float": "floatUpDown 4s infinite ease-in-out",
+        "scan": "scan 4s linear infinite",
+        "fade-in": "fadeIn 0.4s ease forwards",
+        "slide-up": "slideUp 0.5s ease forwards",
+        "spin-slow": "spin 8s linear infinite",
       },
       keyframes: {
         pulseGlow: {
-          "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
-          "50%": { opacity: "0.8", transform: "scale(1.05)" },
+          "0%, 100%": { opacity: "0.4" },
+          "50%": { opacity: "0.9" },
         },
-        float: {
+        floatUpDown: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-6px)" },
         },
-        gridScan: {
-          "0%": { backgroundPosition: "0 0" },
-          "100%": { backgroundPosition: "0 100px" },
+        scan: {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(400%)" },
         },
-        borderBeam: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "cyber-grid": "linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)",
+        "cyber-grid":
+          "linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px)",
+        "glow-cyan":
+          "radial-gradient(ellipse at 50% 50%, rgba(0,229,255,0.15) 0%, transparent 70%)",
       },
     },
   },
