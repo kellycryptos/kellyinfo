@@ -9,7 +9,7 @@ import {
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 14 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-40px" },
+  viewport: { once: true },
   transition: { duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
 });
 

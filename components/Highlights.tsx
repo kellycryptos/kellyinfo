@@ -56,10 +56,9 @@ export default function Highlights() {
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.45, delay: idx * 0.08 }}
-              whileHover={{ y: -3, scale: 1.01 }}
-              className="glass glass-hover p-6 rounded-2xl border border-white/10 space-y-4 flex flex-col justify-between hover:border-cyan-500/35 hover:shadow-[0_0_24px_-6px_rgba(0,229,255,0.18)] transition-all duration-300"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="glass-panel glass-panel-hover p-6 rounded-2xl border border-white/10 space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
