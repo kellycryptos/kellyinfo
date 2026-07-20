@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 14 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
+  viewport: { once: true, margin: "-40px" },
   transition: { duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
 });
 
@@ -52,7 +52,7 @@ export default function TechStack() {
 
         {/* Header */}
         <motion.div {...fadeUp(0)} className="mb-12 max-w-xl">
-          <span className="badge mb-4">Production Arsenal</span>
+          <span className="badge mb-4 hover:border-cyan-400/50 hover:bg-cyan-500/12 transition-all duration-300">Production Arsenal</span>
           <h2 className="font-mono font-black text-4xl sm:text-5xl text-white leading-tight mb-3">
             Tech <span className="gradient-text">Stack</span>
           </h2>
@@ -75,7 +75,7 @@ export default function TechStack() {
                   {items.map((item) => (
                     <span
                       key={item.name}
-                      className={`px-3 py-1.5 rounded-lg glass border ${cat.border} text-xs font-mono ${item.color} hover:scale-105 transition-transform cursor-default`}
+                      className={`px-3.5 py-1.5 rounded-lg glass border ${cat.border} text-xs font-mono ${item.color} hover:scale-105 hover:border-cyan-500/40 hover:shadow-[0_0_16px_rgba(0,229,255,0.2)] active:scale-95 transition-all duration-200 cursor-default`}
                     >
                       {item.name}
                     </span>
@@ -89,7 +89,9 @@ export default function TechStack() {
         {/* Bottom stat strip */}
         <motion.div
           {...fadeUp(0.35)}
-          className="mt-12 glass rounded-2xl border border-white/6 p-6 flex flex-wrap gap-6 items-center justify-between"
+          whileHover={{ y: -2 }}
+          transition={{ duration: 0.3 }}
+          className="mt-12 glass glass-hover rounded-2xl border border-white/6 hover:border-cyan-500/30 p-6 flex flex-wrap gap-6 items-center justify-between shadow-xl"
         >
           {[
             { label: "Chains Deployed On", value: "7+" },
@@ -97,9 +99,9 @@ export default function TechStack() {
             { label: "AI Agents Built", value: "5+" },
             { label: "Selected Builds", value: "4" },
           ].map((stat) => (
-            <div key={stat.label} className="flex flex-col gap-0.5">
-              <span className="font-mono font-black text-2xl text-neon">{stat.value}</span>
-              <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">{stat.label}</span>
+            <div key={stat.label} className="flex flex-col gap-0.5 group">
+              <span className="font-mono font-black text-2xl sm:text-3xl text-neon group-hover:scale-105 transition-transform duration-200 origin-left">{stat.value}</span>
+              <span className="text-[10px] font-mono text-gray-400 group-hover:text-cyan-300 transition-colors uppercase tracking-wider">{stat.label}</span>
             </div>
           ))}
         </motion.div>

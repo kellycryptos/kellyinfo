@@ -17,15 +17,18 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 
   body {
     background-color: #080b12;
     color: #e2e8f0;
     font-family: 'Inter', sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1, "cv11" 1;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
@@ -52,12 +55,25 @@
 }
 
 .glass-hover {
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 .glass-hover:hover {
-  border-color: rgba(0, 229, 255, 0.25);
-  box-shadow: 0 0 28px -8px rgba(0, 229, 255, 0.12);
-  background: rgba(13, 17, 32, 0.85);
+  border-color: rgba(0, 229, 255, 0.3);
+  box-shadow: 0 8px 32px -8px rgba(0, 229, 255, 0.18), 0 0 1px 1px rgba(0, 229, 255, 0.2);
+  background: rgba(13, 17, 32, 0.88);
+}
+
+/* ── Button Glow ── */
+.btn-glow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 25px 0 rgba(0, 229, 255, 0.35);
+  transform: translateY(-1px);
+}
+.btn-glow:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* ── Neon Text ── */

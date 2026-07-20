@@ -19,7 +19,7 @@ interface Project {
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
+  viewport: { once: true, margin: "-40px" },
   transition: { duration: 0.45, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
 });
 
@@ -93,7 +93,7 @@ export default function Projects() {
 
         {/* Header */}
         <motion.div {...fadeUp(0)} className="mb-12 max-w-xl">
-          <span className="badge mb-4">Shipped Products & Protocols</span>
+          <span className="badge mb-4 hover:border-cyan-400/50 hover:bg-cyan-500/12 transition-all duration-300">Shipped Products & Protocols</span>
           <h2 className="font-mono font-black text-4xl sm:text-5xl text-white leading-tight mb-3">
             What I Have <span className="gradient-text">Built</span>
           </h2>
@@ -108,58 +108,59 @@ export default function Projects() {
             <motion.div
               key={p.id}
               {...fadeUp(i * 0.05)}
-              whileHover={{ y: -4 }}
-              className="glass glass-hover border border-white/6 rounded-2xl p-5 flex flex-col gap-4 group cursor-pointer"
+              whileHover={{ y: -4, scale: 1.01 }}
+              transition={{ duration: 0.25 }}
+              className="glass glass-hover border border-white/6 rounded-2xl p-5 sm:p-6 flex flex-col gap-4 group cursor-pointer hover:border-cyan-500/40 hover:shadow-[0_0_30px_-6px_rgba(0,229,255,0.2)] transition-all duration-300"
               onClick={() => setSelected(p)}
             >
               {/* Top row */}
               <div className="flex items-center justify-between">
-                <div className="p-2 rounded-lg bg-white/5 border border-white/8 text-cyan-400 group-hover:border-cyan-500/30 transition-colors">
+                <div className="p-2 rounded-lg bg-white/5 border border-white/8 text-cyan-400 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/10 group-hover:scale-110 transition-all duration-300">
                   <Terminal className="w-4 h-4" />
                 </div>
-                <span className="tag">{p.badge}</span>
+                <span className="tag group-hover:border-cyan-500/30 group-hover:text-cyan-300 transition-colors">{p.badge}</span>
               </div>
 
               {/* Name + tagline */}
               <div>
-                <h3 className="font-mono font-bold text-base text-white group-hover:text-cyan-300 transition-colors mb-1">
+                <h3 className="font-mono font-bold text-base sm:text-lg text-white group-hover:text-cyan-300 transition-colors mb-1">
                   {p.name}
                 </h3>
-                <p className="text-[11px] font-mono text-cyan-400/80">{p.tagline}</p>
+                <p className="text-[11px] font-mono text-cyan-400/80 font-medium">{p.tagline}</p>
               </div>
 
               {/* Desc */}
-              <p className="text-xs text-gray-400 leading-relaxed flex-1">{p.desc}</p>
+              <p className="text-xs text-gray-400 leading-relaxed flex-1 font-sans">{p.desc}</p>
 
               {/* Core highlight */}
-              <div className="p-3 rounded-lg bg-black/20 border border-white/5 text-[11px] font-mono text-gray-400 line-clamp-2">
-                <span className="text-cyan-500 font-bold">▸ </span>
+              <div className="p-3 rounded-lg bg-black/25 border border-white/5 text-[11px] font-mono text-gray-400 line-clamp-2 group-hover:border-cyan-500/20 transition-colors">
+                <span className="text-cyan-400 font-bold">▸ </span>
                 {p.details[0]}
               </div>
 
               {/* Tech */}
               <div className="flex flex-wrap gap-1.5">
                 {p.tech.map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded bg-white/4 border border-white/8 text-[10px] font-mono text-gray-500">
+                  <span key={t} className="px-2 py-0.5 rounded bg-white/4 border border-white/8 text-[10px] font-mono text-gray-400 group-hover:border-white/15 transition-colors">
                     {t}
                   </span>
                 ))}
               </div>
 
               {/* Actions */}
-              <div className="flex items-center justify-between pt-1 border-t border-white/5">
-                <button className="text-[11px] font-mono text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1">
-                  <Layers className="w-3 h-3" />
+              <div className="flex items-center justify-between pt-2 border-t border-white/5">
+                <button className="text-[11px] font-mono text-cyan-400 group-hover:text-cyan-300 transition-colors flex items-center gap-1.5 font-semibold">
+                  <Layers className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform duration-300" />
                   Deep Dive
                 </button>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   {p.liveUrl && (
                     <a
                       href={p.liveUrl}
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded-lg bg-cyan-500/8 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/20 transition-colors"
+                      className="p-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-400 border border-cyan-500/25 hover:border-cyan-400/50 transition-all duration-200 active:scale-90"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
@@ -169,7 +170,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 border border-white/8 transition-colors"
+                    className="p-1.5 rounded-lg bg-white/5 hover:bg-white/12 text-gray-400 hover:text-white border border-white/8 hover:border-white/20 transition-all duration-200 active:scale-90"
                   >
                     <Github className="w-3.5 h-3.5" />
                   </a>

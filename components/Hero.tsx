@@ -67,7 +67,7 @@ export default function Hero() {
 
             {/* Status pill */}
             <motion.div {...fadeUp(0)}>
-              <span className="badge">
+              <span className="badge hover:border-cyan-400/50 hover:bg-cyan-500/12 transition-all duration-300 cursor-default hover:shadow-[0_0_15px_rgba(0,229,255,0.2)]">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 pulse-dot" />
                 Available · Advisory · Co-founding · Investment
               </span>
@@ -75,33 +75,33 @@ export default function Hero() {
 
             {/* Name */}
             <motion.div {...fadeUp(0.08)} className="space-y-2">
-              <h1 className="font-mono font-black text-[64px] sm:text-[80px] lg:text-[96px] leading-[0.9] tracking-tight text-white">
+              <h1 className="font-mono font-black text-[64px] sm:text-[80px] lg:text-[96px] leading-[0.9] tracking-tight text-white drop-shadow-[0_0_35px_rgba(255,255,255,0.06)]">
                 KELLY
               </h1>
-              <p className="font-mono text-sm sm:text-base text-cyan-400/90 tracking-[0.2em] uppercase font-medium">
+              <p className="font-mono text-sm sm:text-base text-cyan-400/90 tracking-[0.22em] uppercase font-semibold">
                 Co-Founder · Builder · Trader · Advisor
               </p>
             </motion.div>
 
             {/* Bio */}
-            <motion.p {...fadeUp(0.16)} className="text-gray-400 text-base leading-relaxed max-w-lg font-light">
+            <motion.p {...fadeUp(0.16)} className="text-gray-400 text-base leading-relaxed max-w-lg font-light tracking-wide">
               Crypto architect turning vision into onchain reality across cabals, DAOs,
               agency marketing, and high-performance protocols. Building at the edge
               of DeFi, AI agents &amp; confidential compute.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 pt-2">
+            <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3.5 pt-2">
               <a
                 href="#built"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-semibold text-sm hover:opacity-90 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all"
+                className="btn-glow inline-flex items-center gap-2 px-6.5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-semibold text-sm shadow-lg shadow-cyan-500/20 active:scale-95 transition-all"
               >
                 <Compass className="w-4 h-4" />
                 View My Work
               </a>
               <a
                 href="#connect"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass border border-white/10 hover:border-cyan-500/30 text-gray-200 hover:text-cyan-300 font-mono font-semibold text-sm transition-all"
+                className="inline-flex items-center gap-2 px-6.5 py-3 rounded-xl glass border border-white/10 hover:border-cyan-500/40 text-gray-200 hover:text-cyan-300 font-mono font-semibold text-sm transition-all duration-300 hover:shadow-[0_0_20px_-4px_rgba(0,229,255,0.25)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
               >
                 <Send className="w-4 h-4" />
                 Get in Touch

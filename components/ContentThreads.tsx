@@ -110,7 +110,7 @@ const popularThreads: ContentCardProps[] = [
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
+  viewport: { once: true, margin: "-40px" },
   transition: { duration: 0.4, delay, ease: [0.25, 0.46, 0.45, 0.94] as const },
 });
 
@@ -124,7 +124,7 @@ export default function ContentThreads() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <motion.div {...fadeUp(0)} className="max-w-xl">
-            <span className="badge mb-4">
+            <span className="badge mb-4 hover:border-cyan-400/50 hover:bg-cyan-500/12 transition-all duration-300">
               <Sparkles className="w-3 h-3 text-cyan-400" /> Research & Publications
             </span>
             <h2 className="font-mono font-black text-4xl sm:text-5xl text-white leading-tight mb-3">
@@ -136,12 +136,12 @@ export default function ContentThreads() {
           </motion.div>
 
           {/* View Filter Tabs */}
-          <motion.div {...fadeUp(0.1)} className="flex items-center gap-1.5 glass p-1.5 rounded-xl border border-white/8 self-start md:self-end">
+          <motion.div {...fadeUp(0.1)} className="flex items-center gap-1.5 glass p-1.5 rounded-xl border border-white/8 self-start md:self-end shadow-lg">
             <button
               onClick={() => setActiveTab("both")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all ${
+              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 active:scale-95 ${
                 activeTab === "both"
-                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30"
+                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/35 shadow-[0_0_15px_rgba(0,229,255,0.15)]"
                   : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
               }`}
             >
@@ -149,9 +149,9 @@ export default function ContentThreads() {
             </button>
             <button
               onClick={() => setActiveTab("articles")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 flex items-center gap-1.5 active:scale-95 ${
                 activeTab === "articles"
-                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30"
+                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/35 shadow-[0_0_15px_rgba(0,229,255,0.15)]"
                   : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
               }`}
             >
@@ -160,9 +160,9 @@ export default function ContentThreads() {
             </button>
             <button
               onClick={() => setActiveTab("threads")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all flex items-center gap-1.5 ${
+              className={`px-3.5 py-1.5 text-xs font-mono rounded-lg transition-all duration-200 flex items-center gap-1.5 active:scale-95 ${
                 activeTab === "threads"
-                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30"
+                  ? "bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/35 shadow-[0_0_15px_rgba(0,229,255,0.15)]"
                   : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
               }`}
             >
@@ -200,12 +200,13 @@ export default function ContentThreads() {
                   <motion.div
                     key={item.link}
                     {...fadeUp(i * 0.05)}
-                    whileHover={{ y: -2 }}
-                    className="glass glass-hover p-4 rounded-xl border border-white/6 flex flex-col justify-between gap-3 group"
+                    whileHover={{ y: -3, scale: 1.01 }}
+                    transition={{ duration: 0.25 }}
+                    className="glass glass-hover p-4 sm:p-5 rounded-xl border border-white/6 flex flex-col justify-between gap-3 group hover:border-cyan-500/40 hover:shadow-[0_0_24px_-6px_rgba(0,229,255,0.18)] transition-all duration-300"
                   >
-                    <div className="space-y-1.5">
+                    <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-white/5 text-cyan-300 border border-white/8">
+                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-white/5 text-cyan-300 border border-white/8 group-hover:border-cyan-500/25 transition-colors">
                           {item.badge}
                         </span>
                         <span className="text-[11px] font-mono text-gray-500 flex items-center gap-1">
@@ -227,7 +228,7 @@ export default function ContentThreads() {
                       href={item.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/8 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-200 border border-cyan-500/20 hover:border-cyan-500/40 text-xs font-mono font-bold transition-all w-full sm:w-auto self-start"
+                      className="mt-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-400 hover:text-cyan-200 border border-cyan-500/25 hover:border-cyan-400/50 text-xs font-mono font-bold transition-all duration-200 active:scale-95 shadow-[0_0_12px_rgba(0,229,255,0.08)] hover:shadow-[0_0_18px_rgba(0,229,255,0.2)] w-full sm:w-auto self-start"
                     >
                       Read Thread <ExternalLink className="w-3 h-3" />
                     </a>
@@ -257,12 +258,13 @@ export default function ContentThreads() {
                   <motion.div
                     key={item.link}
                     {...fadeUp(i * 0.05)}
-                    whileHover={{ y: -2 }}
-                    className="glass glass-hover p-4 rounded-xl border border-white/6 flex flex-col justify-between gap-3 group"
+                    whileHover={{ y: -3, scale: 1.01 }}
+                    transition={{ duration: 0.25 }}
+                    className="glass glass-hover p-4 sm:p-5 rounded-xl border border-white/6 flex flex-col justify-between gap-3 group hover:border-cyan-500/40 hover:shadow-[0_0_24px_-6px_rgba(0,229,255,0.18)] transition-all duration-300"
                   >
-                    <div className="space-y-1.5">
+                    <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-white/5 text-cyan-300 border border-white/8">
+                        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-white/5 text-cyan-300 border border-white/8 group-hover:border-cyan-500/25 transition-colors">
                           {item.badge}
                         </span>
                         <span className="text-[11px] font-mono text-cyan-400 flex items-center gap-1 font-semibold">
@@ -284,7 +286,7 @@ export default function ContentThreads() {
                       href={item.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="mt-1 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/8 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-200 border border-cyan-500/20 hover:border-cyan-500/40 text-xs font-mono font-bold transition-all w-full sm:w-auto self-start"
+                      className="mt-1 inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-400 hover:text-cyan-200 border border-cyan-500/25 hover:border-cyan-400/50 text-xs font-mono font-bold transition-all duration-200 active:scale-95 shadow-[0_0_12px_rgba(0,229,255,0.08)] hover:shadow-[0_0_18px_rgba(0,229,255,0.2)] w-full sm:w-auto self-start"
                     >
                       Read Thread <ExternalLink className="w-3 h-3" />
                     </a>
