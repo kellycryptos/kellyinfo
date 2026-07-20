@@ -39,11 +39,10 @@ export default function Hero() {
                 {/* Image */}
                 <div className="relative w-full aspect-[4/5] overflow-hidden">
                   <Image
-                    src="/images/avatar.webp"
+                    src="/images/avatar.png"
                     alt="Kelly — Web3 Builder"
                     fill
                     priority
-                    decoding="async"
                     sizes="(max-width: 640px) 280px, 320px"
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                   />

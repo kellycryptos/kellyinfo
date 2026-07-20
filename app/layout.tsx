@@ -34,14 +34,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <head>
-        <link
-          rel="preload"
-          href="/images/avatar.webp"
-          as="image"
-          type="image/webp"
-        />
-      </head>
       <body className="antialiased">{children}</body>
     </html>
   );

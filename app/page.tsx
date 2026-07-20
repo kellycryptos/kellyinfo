@@ -1,15 +1,13 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-
-const About = dynamic(() => import("@/components/About"));
-const Projects = dynamic(() => import("@/components/Projects"));
-const ContentThreads = dynamic(() => import("@/components/ContentThreads"));
-const TechStack = dynamic(() => import("@/components/TechStack"));
-const Connect = dynamic(() => import("@/components/Connect"));
-const Footer = dynamic(() => import("@/components/Footer"));
+import About from "@/components/About";
+import Projects from "@/components/Projects";
+import ContentThreads from "@/components/ContentThreads";
+import TechStack from "@/components/TechStack";
+import Connect from "@/components/Connect";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (

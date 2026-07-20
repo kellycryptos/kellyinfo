@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, X, Terminal, Layers, Cpu } from "lucide-react";
@@ -15,7 +14,6 @@ interface Project {
   tech: string[];
   badge: string;
   details: string[];
-  image?: string;
 }
 
 const fadeUp = (delay = 0) => ({
@@ -35,7 +33,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/kellycryptos/synarc-dao",
     tech: ["Arc Testnet", "@synarc/agent-sdk", "Next.js 15", "Solidity"],
     badge: "LIVE PROTOCOL",
-    image: "/images/synarc_dao.webp",
     details: [
       "Autonomous proposal analysis and voting via @synarc/agent-sdk.",
       "Gasless delegation powered by Paymasters & smart accounts.",
@@ -51,7 +48,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/kellycryptos/govcopilot",
     tech: ["Next.js 15", "Groq LLM", "Python", "Onchain Execution"],
     badge: "AI GOVERNANCE",
-    image: "/images/govcopilot.webp",
     details: [
       "Semantic search and proposal analysis for DAO governance.",
       "Real-time voting strategy and alignment vector calculation.",
@@ -66,7 +62,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/kellycryptos/nft-hash-flash",
     tech: ["Node.js", "ethers.js", "Telegram Bot API", "Pinata IPFS"],
     badge: "TELEGRAM BOT",
-    image: "/images/nfthashflash.webp",
     details: [
       "Sub-second metadata pinning using dedicated Pinata IPFS gateways.",
       "High-speed multi-chain NFT generation and minting via Telegram.",
@@ -81,7 +76,6 @@ const projects: Project[] = [
     githubUrl: "https://github.com/kellycryptos/gov-encrypt",
     tech: ["Arcium MXE", "Solana Anchor", "Rust", "Confidential Compute"],
     badge: "CONFIDENTIAL DEFI",
-    image: "/images/gov_encrypt.webp",
     details: [
       "Encrypted vote payloads processed in Arcium Multi-Party Execution Environments.",
       "Private voting and encrypted delegation protocol on Solana.",
@@ -125,21 +119,6 @@ export default function Projects() {
                 </div>
                 <span className="tag">{p.badge}</span>
               </div>
-
-              {/* Card Image Thumbnail */}
-              {p.image && (
-                <div className="relative w-full h-36 rounded-xl overflow-hidden border border-white/8 bg-black/40">
-                  <Image
-                    src={p.image}
-                    alt={p.name}
-                    fill
-                    loading="lazy"
-                    decoding="async"
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
-                </div>
-              )}
 
               {/* Name + tagline */}
               <div>
